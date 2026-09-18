@@ -61,28 +61,31 @@
 /* Light Theme Design Tokens */
 [data-theme="light"] {
     --color-gold: #B8862E;
-    --color-gold-light: #C9983E;
+    --color-gold-light: #D4A853;
     --color-gold-dark: #8C6418;
-    --color-amber: #B45309;
+    --color-amber: #C97B2A;
     --color-copper: #9A3412;
 
-    --color-dark: #FBF8F2;
+    --color-dark: #FAF7F2;
     --color-dark-800: #FFFFFF;
-    --color-dark-700: #F4ECE1;
-    --color-dark-600: #E9DFD2;
-    --color-dark-500: #DDD0C0;
-    --color-dark-400: #C7B7A3;
+    --color-dark-700: #F5EFE6;
+    --color-dark-600: #EBDCC8;
+    --color-dark-500: #DEC7A7;
+    --color-dark-400: #CBB089;
 
     --color-cream: #1C1917;
     --color-cream-dark: #292524;
     --color-cream-light: #44403C;
-    --color-white: #0F0E0C;
+    --color-white: #FFFFFF;
 
-    --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
-    --shadow-md: 0 4px 20px rgba(0,0,0,0.07);
-    --shadow-lg: 0 8px 30px rgba(0,0,0,0.1);
-    --shadow-xl: 0 16px 48px rgba(0,0,0,0.14);
-    --shadow-gold: 0 4px 20px rgba(184, 134, 46, 0.25);
+    --color-red: #DC2626;
+    --color-teal: #0D9488;
+
+    --shadow-sm: 0 2px 8px rgba(184, 134, 46, 0.08);
+    --shadow-md: 0 4px 20px rgba(184, 134, 46, 0.12);
+    --shadow-lg: 0 8px 30px rgba(184, 134, 46, 0.16);
+    --shadow-xl: 0 16px 48px rgba(184, 134, 46, 0.2);
+    --shadow-gold: 0 4px 20px rgba(184, 134, 46, 0.3);
 }
 
 /* ========================================
@@ -1747,9 +1750,11 @@ ul { list-style: none; }
     }
 }
 
-/* ========================================
-   COMPREHENSIVE HIGH-CONTRAST LIGHT THEME
-   ======================================== */
+/* ===================================================
+   VIBRANT & LIVELY MEDITERRANEAN LIGHT THEME
+   Warm ambient lighting, glowing Damascus gold,
+   rich culinary color accents, and crisp contrast.
+   =================================================== */
 [data-theme="light"] {
     background-color: #FAF7F2 !important;
     color: #1C1917 !important;
@@ -1760,13 +1765,24 @@ ul { list-style: none; }
     color: #1C1917 !important;
 }
 
-/* Headings & Text */
+/* ── Headings & Damascus Gold Accents ── */
 [data-theme="light"] .section-title,
 [data-theme="light"] h1,
 [data-theme="light"] h2,
 [data-theme="light"] h3,
 [data-theme="light"] h4 {
     color: #1C1917 !important;
+}
+
+[data-theme="light"] .section-title em,
+[data-theme="light"] h1 em,
+[data-theme="light"] h2 em,
+[data-theme="light"] h3 em {
+    color: #B8862E !important;
+    background: linear-gradient(135deg, #C97B2A 0%, #B8862E 50%, #945B08 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    font-style: italic !important;
 }
 
 [data-theme="light"] .section-desc {
@@ -1777,19 +1793,50 @@ ul { list-style: none; }
     color: #292524;
 }
 
-/* Navbar */
+/* ── Section Tags (Vibrant Golden Badge Pill) ── */
+[data-theme="light"] .section-tag {
+    background: linear-gradient(135deg, rgba(212, 168, 83, 0.18), rgba(201, 123, 42, 0.1)) !important;
+    color: #8F5904 !important;
+    border: 1px solid rgba(184, 134, 46, 0.4) !important;
+    box-shadow: 0 2px 8px rgba(184, 134, 46, 0.14) !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.18em !important;
+}
+
+/* ── Section Dividers ── */
+[data-theme="light"] .about-divider span {
+    color: #B8862E !important;
+    text-shadow: 0 0 10px rgba(212, 168, 83, 0.45);
+}
+
+[data-theme="light"] .about-divider::before {
+    background: linear-gradient(to right, #B8862E, transparent) !important;
+}
+
+[data-theme="light"] .about-divider::after {
+    background: linear-gradient(to left, #B8862E, transparent) !important;
+}
+
+/* ── Navbar ── */
 [data-theme="light"] .navbar {
-    background: rgba(250, 247, 242, 0.95) !important;
-    border-bottom: 1px solid rgba(184, 134, 46, 0.2) !important;
-    box-shadow: 0 2px 16px rgba(0,0,0,0.06) !important;
+    background: rgba(253, 250, 245, 0.94) !important;
+    border-bottom: 1px solid rgba(212, 168, 83, 0.25) !important;
+    box-shadow: 0 4px 20px rgba(184, 134, 46, 0.08) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 }
 
 [data-theme="light"] .logo-en {
     color: #1C1917 !important;
 }
 
+[data-theme="light"] .logo-ar {
+    color: #B8862E !important;
+}
+
 [data-theme="light"] .nav-link {
     color: #44403C !important;
+    font-weight: 600;
 }
 
 [data-theme="light"] .nav-link:hover,
@@ -1798,7 +1845,7 @@ ul { list-style: none; }
 }
 
 [data-theme="light"] .nav-links {
-    background: rgba(250, 247, 242, 0.98) !important;
+    background: rgba(253, 250, 245, 0.98) !important;
 }
 
 [data-theme="light"] .nav-toggle span {
@@ -1806,25 +1853,40 @@ ul { list-style: none; }
 }
 
 [data-theme="light"] .theme-toggle {
-    background: #FFFFFF !important;
-    border-color: rgba(184, 134, 46, 0.4) !important;
-    color: #B8862E !important;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08) !important;
+    background: linear-gradient(135deg, #FFF9EE, #F8EEDB) !important;
+    border: 1.5px solid rgba(212, 168, 83, 0.45) !important;
+    color: #8F5904 !important;
+    box-shadow: 0 2px 10px rgba(184, 134, 46, 0.16) !important;
 }
 
-/* Hero Section (Keep high contrast against dark video overlay) */
+[data-theme="light"] .theme-toggle:hover {
+    background: linear-gradient(135deg, #FDEFD4, #F2DEBD) !important;
+    border-color: #B8862E !important;
+    color: #6E4405 !important;
+    transform: scale(1.05);
+}
+
+/* ── Hero Section (Preserve high contrast against dark video overlay) ── */
 [data-theme="light"] .hero .hero-subtitle {
     color: rgba(255, 255, 255, 0.9) !important;
 }
 
 [data-theme="light"] .hero .btn-secondary {
+    background: rgba(255, 255, 255, 0.08) !important;
     color: #FFFFFF !important;
-    border-color: rgba(255, 255, 255, 0.4) !important;
+    border-color: rgba(255, 255, 255, 0.45) !important;
 }
 
-/* About Section */
+[data-theme="light"] .hero .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.16) !important;
+    border-color: #FFFFFF !important;
+}
+
+/* ── About Section (Sun-Drenched Warm Sandstone Ambience) ── */
 [data-theme="light"] .about {
-    background: #F3ECE1 !important;
+    background: radial-gradient(circle at 10% 20%, rgba(212, 168, 83, 0.14) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(201, 123, 42, 0.1) 0%, transparent 40%),
+                #F5EFE6 !important;
 }
 
 [data-theme="light"] .about-story p {
@@ -1838,83 +1900,175 @@ ul { list-style: none; }
 [data-theme="light"] .about-feature-item {
     background: #FFFFFF !important;
     border: 1px solid rgba(184, 134, 46, 0.25) !important;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.04) !important;
+    border-left: 3px solid #D4A853 !important;
+    box-shadow: 0 4px 14px rgba(184, 134, 46, 0.08) !important;
+}
+
+[data-theme="light"] .about-feature-icon {
+    background: linear-gradient(135deg, rgba(212, 168, 83, 0.25), rgba(201, 123, 42, 0.12)) !important;
+    border: 1px solid rgba(184, 134, 46, 0.3) !important;
+    border-radius: 50% !important;
+    width: 34px !important;
+    height: 34px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 2px 6px rgba(212, 168, 83, 0.15) !important;
 }
 
 [data-theme="light"] .about-feature-item span {
     color: #1C1917 !important;
+    font-weight: 600;
 }
 
-/* Reviews Section */
+/* 5.0 Star Highlight Card in About */
+[data-theme="light"] .about-story[style*="border"] {
+    background: linear-gradient(135deg, #FFFFFF 0%, #FFF8EC 100%) !important;
+    border: 2px solid rgba(212, 168, 83, 0.4) !important;
+    box-shadow: 0 8px 28px rgba(184, 134, 46, 0.12) !important;
+}
+
+[data-theme="light"] .about-story[style*="border"] h3 {
+    color: #8F5904 !important;
+    font-weight: 700 !important;
+}
+
+[data-theme="light"] .about-story[style*="border"] p {
+    color: #44403C !important;
+}
+
+/* ── Customer Reviews Section ── */
 [data-theme="light"] .reviews {
-    background: #FAF7F2 !important;
+    background: radial-gradient(ellipse at 50% 100%, rgba(212, 168, 83, 0.12) 0%, transparent 70%),
+                #FAF6F0 !important;
 }
 
 [data-theme="light"] .review-card {
     background: #FFFFFF !important;
-    border: 1px solid rgba(184, 134, 46, 0.25) !important;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.06) !important;
+    border: 1px solid rgba(184, 134, 46, 0.22) !important;
+    border-top: 3px solid #D4A853 !important;
+    box-shadow: 0 6px 20px rgba(184, 134, 46, 0.08) !important;
+}
+
+[data-theme="light"] .review-card:hover {
+    border-color: #B8862E !important;
+    border-top: 3px solid #C97B2A !important;
+    transform: translateY(-4px) !important;
+    box-shadow: 0 14px 34px rgba(184, 134, 46, 0.18) !important;
+}
+
+[data-theme="light"] .review-stars {
+    color: #E69500 !important;
+    filter: drop-shadow(0 2px 5px rgba(230, 149, 0, 0.35)) !important;
 }
 
 [data-theme="light"] .review-text {
     color: #292524 !important;
 }
 
+[data-theme="light"] .review-author {
+    border-top: 1px solid rgba(184, 134, 46, 0.15) !important;
+}
+
 [data-theme="light"] .review-name {
     color: #1C1917 !important;
+    font-weight: 700;
 }
 
 [data-theme="light"] .review-source {
-    color: #665E54 !important;
+    color: #78716C !important;
 }
 
 [data-theme="light"] .btn-google-review {
     background: #FFFFFF !important;
     color: #1C1917 !important;
-    border-color: rgba(184, 134, 46, 0.35) !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important;
+    border: 1px solid rgba(184, 134, 46, 0.35) !important;
+    box-shadow: 0 3px 12px rgba(184, 134, 46, 0.12) !important;
+    font-weight: 600;
 }
 
 [data-theme="light"] .btn-google-review:hover {
-    background: #F8F5EE !important;
-    color: #1C1917 !important;
+    background: #FFF9EE !important;
     border-color: #B8862E !important;
+    color: #8F5904 !important;
+    box-shadow: 0 6px 18px rgba(184, 134, 46, 0.22) !important;
 }
 
-/* Menu Section */
+/* ── Menu Section (Luminous Warm Atmosphere) ── */
 [data-theme="light"] .menu {
-    background: #FAF7F2 !important;
+    background: radial-gradient(ellipse at 50% 0%, rgba(212, 168, 83, 0.16) 0%, transparent 65%),
+                radial-gradient(circle at 100% 50%, rgba(201, 123, 42, 0.08) 0%, transparent 50%),
+                #FBF8F3 !important;
 }
 
+[data-theme="light"] .menu::before {
+    background: linear-gradient(90deg, transparent, #D4A853 25%, #C97B2A 50%, #D4A853 75%, transparent) !important;
+    height: 2px !important;
+    opacity: 0.85;
+}
+
+/* Menu Filter Tabs (Vibrant Pill Accents) */
 [data-theme="light"] .menu-tab {
-    color: #57534E !important;
     background: #FFFFFF !important;
-    border: 1px solid rgba(0,0,0,0.12) !important;
+    color: #57534E !important;
+    border: 1px solid rgba(184, 134, 46, 0.22) !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03) !important;
+    font-weight: 600 !important;
+}
+
+[data-theme="light"] .menu-tab:hover:not(.active) {
+    background: #FFF9EE !important;
+    border-color: #B8862E !important;
+    color: #8F5904 !important;
+    transform: translateY(-1px);
 }
 
 [data-theme="light"] .menu-tab.active {
+    background: linear-gradient(135deg, #D4A853 0%, #C97B2A 100%) !important;
     color: #FFFFFF !important;
-    background: linear-gradient(135deg, #B8862E, #94691B) !important;
     border-color: #B8862E !important;
+    box-shadow: 0 4px 14px rgba(201, 123, 42, 0.35) !important;
+    font-weight: 700 !important;
+    transform: translateY(-1px);
 }
 
+/* ── Menu Cards (Luxurious Warm Golden Accent) ── */
 [data-theme="light"] .menu-card {
     background: #FFFFFF !important;
-    border: 1px solid rgba(184, 134, 46, 0.22) !important;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.05) !important;
+    border: 1px solid rgba(184, 134, 46, 0.2) !important;
+    border-top: 3px solid #D4A853 !important;
+    box-shadow: 0 4px 18px rgba(184, 134, 46, 0.08), 0 1px 4px rgba(0, 0, 0, 0.03) !important;
+    transition: all var(--transition-medium);
 }
 
 [data-theme="light"] .menu-card:hover {
-    border-color: rgba(184, 134, 46, 0.45) !important;
-    box-shadow: 0 10px 28px rgba(184, 134, 46, 0.12) !important;
+    border-color: #B8862E !important;
+    border-top: 3px solid #C97B2A !important;
+    box-shadow: 0 12px 36px rgba(184, 134, 46, 0.2), 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+    transform: translateY(-3px) !important;
+}
+
+[data-theme="light"] .menu-card-img {
+    background: #23201A !important;
+}
+
+[data-theme="light"] .menu-card-img.no-photo {
+    background: linear-gradient(135deg, #F5EFE6, #E8DEC8) !important;
+}
+
+[data-theme="light"] .placeholder-label {
+    color: #786C5A !important;
 }
 
 [data-theme="light"] .menu-card-header h3 {
     color: #1C1917 !important;
+    font-weight: 700;
 }
 
 [data-theme="light"] .menu-price {
-    color: #8C6418 !important;
+    color: #B45309 !important;
+    font-weight: 700 !important;
+    font-size: 0.95rem !important;
 }
 
 [data-theme="light"] .menu-item-desc {
@@ -1922,35 +2076,65 @@ ul { list-style: none; }
 }
 
 [data-theme="light"] .menu-item-note {
-    color: #665E54 !important;
+    color: #78716C !important;
 }
 
 [data-theme="light"] .menu-note p {
     color: #57534E !important;
 }
 
-[data-theme="light"] .placeholder-label {
-    color: #8C8476 !important;
+/* ── Vibrant Menu Badges ── */
+[data-theme="light"] .menu-badge.signature {
+    background: linear-gradient(135deg, #DC2626, #991B1B) !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 3px 10px rgba(220, 38, 38, 0.4) !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.25);
+}
+
+[data-theme="light"] .menu-badge.popular {
+    background: linear-gradient(135deg, #F59E0B, #B45309) !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 3px 10px rgba(245, 158, 11, 0.4) !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+[data-theme="light"] .menu-badge.jumbo {
+    background: linear-gradient(135deg, #0D9488, #0F766E) !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 3px 10px rgba(13, 148, 136, 0.4) !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+[data-theme="light"] .menu-badge.double {
+    background: linear-gradient(135deg, #7C3AED, #5B21B6) !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 3px 10px rgba(124, 58, 237, 0.4) !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
 /* Combo dropdown / size toggles */
 [data-theme="light"] .combo-toggle {
-    background: #F5EFE6 !important;
-    color: #1C1917 !important;
-    border-color: rgba(184, 134, 46, 0.3) !important;
+    background: linear-gradient(135deg, #FFF9EE, #F6EBD9) !important;
+    color: #8F5904 !important;
+    border: 1px solid rgba(184, 134, 46, 0.35) !important;
+    font-weight: 600 !important;
+    box-shadow: 0 2px 6px rgba(184, 134, 46, 0.08) !important;
 }
 
 [data-theme="light"] .combo-toggle:hover {
-    background: #EDE3D0 !important;
+    background: linear-gradient(135deg, #FDEFD5, #EED7B5) !important;
+    color: #6E4405 !important;
+    border-color: #B8862E !important;
 }
 
 [data-theme="light"] .combo-sizes {
-    background: #FAF7F2 !important;
+    background: #FFFDF8 !important;
     border: 1px solid rgba(184, 134, 46, 0.25) !important;
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.02) !important;
 }
 
 [data-theme="light"] .combo-size-row {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.07) !important;
+    border-bottom: 1px solid rgba(184, 134, 46, 0.12) !important;
 }
 
 [data-theme="light"] .combo-size-name {
@@ -1962,18 +2146,38 @@ ul { list-style: none; }
 }
 
 [data-theme="light"] .combo-size-price {
-    color: #8C6418 !important;
+    color: #B45309 !important;
+    font-weight: 700 !important;
 }
 
-/* Catering Section */
+/* ── Catering Section (Warm & Regal) ── */
 [data-theme="light"] .catering-preview {
-    background: #F3ECE1 !important;
+    background: radial-gradient(circle at 80% 20%, rgba(201, 123, 42, 0.1) 0%, transparent 45%),
+                #F5EFE6 !important;
+}
+
+[data-theme="light"] .catering {
+    background: radial-gradient(circle at 50% 0%, rgba(212, 168, 83, 0.18) 0%, transparent 70%),
+                #FAF6F0 !important;
+    border-top: 1px solid rgba(184, 134, 46, 0.25) !important;
+}
+
+[data-theme="light"] .catering-lead {
+    color: #44403C !important;
 }
 
 [data-theme="light"] .catering-card {
     background: #FFFFFF !important;
     border: 1px solid rgba(184, 134, 46, 0.22) !important;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.05) !important;
+    border-top: 3px solid #D4A853 !important;
+    box-shadow: 0 6px 20px rgba(184, 134, 46, 0.08) !important;
+}
+
+[data-theme="light"] .catering-card:hover {
+    border-color: #B8862E !important;
+    border-top: 3px solid #C97B2A !important;
+    box-shadow: 0 12px 30px rgba(184, 134, 46, 0.2) !important;
+    transform: translateY(-3px) !important;
 }
 
 [data-theme="light"] .catering-card h3 {
@@ -1984,8 +2188,17 @@ ul { list-style: none; }
     color: #44403C !important;
 }
 
-[data-theme="light"] .catering-lead {
-    color: #44403C !important;
+[data-theme="light"] .catering-card-badge {
+    background: linear-gradient(135deg, rgba(212, 168, 83, 0.22), rgba(201, 123, 42, 0.12)) !important;
+    color: #8F5904 !important;
+    border: 1px solid rgba(184, 134, 46, 0.35) !important;
+    font-weight: 700 !important;
+    box-shadow: 0 2px 6px rgba(184, 134, 46, 0.1) !important;
+}
+
+[data-theme="light"] .catering-card-servings {
+    color: #8F5904 !important;
+    font-weight: 700 !important;
 }
 
 [data-theme="light"] .catering-item {
@@ -2003,11 +2216,13 @@ ul { list-style: none; }
 }
 
 [data-theme="light"] .catering-contact-box {
-    background: #FFFFFF !important;
-    border: 1px solid rgba(184, 134, 46, 0.3) !important;
+    background: linear-gradient(135deg, #FFFFFF 0%, #FFF8EC 100%) !important;
+    border: 2px solid rgba(212, 168, 83, 0.45) !important;
+    box-shadow: 0 12px 36px rgba(184, 134, 46, 0.14) !important;
 }
 
-[data-theme="light"] .catering-contact-box h3 {
+[data-theme="light"] .catering-contact-box h3,
+[data-theme="light"] .catering-contact-box h2 {
     color: #1C1917 !important;
 }
 
@@ -2015,13 +2230,28 @@ ul { list-style: none; }
     color: #44403C !important;
 }
 
-[data-theme="light"] .catering-note {
-    color: #665E54 !important;
+[data-theme="light"] .catering-phone-highlight {
+    background: linear-gradient(135deg, #FFF9EF 0%, #F5E8D3 100%) !important;
+    color: #8F5904 !important;
+    border: 2px solid rgba(212, 168, 83, 0.5) !important;
+    box-shadow: 0 4px 16px rgba(184, 134, 46, 0.18) !important;
 }
 
-/* Contact Section */
+[data-theme="light"] .catering-phone-highlight:hover {
+    background: linear-gradient(135deg, #FDF0DB, #EED6B2) !important;
+    border-color: #B8862E !important;
+    color: #6E4405 !important;
+    transform: translateY(-2px) !important;
+}
+
+[data-theme="light"] .catering-note {
+    color: #78716C !important;
+}
+
+/* ── Contact Section ── */
 [data-theme="light"] .contact {
-    background: #FAF7F2 !important;
+    background: radial-gradient(circle at 50% 0%, rgba(212, 168, 83, 0.15) 0%, transparent 60%),
+                #FBF8F3 !important;
 }
 
 [data-theme="light"] .contact-card,
@@ -2031,8 +2261,21 @@ ul { list-style: none; }
     box-shadow: 0 4px 18px rgba(0,0,0,0.05) !important;
 }
 
-[data-theme="light"] .contact-item h4 {
-    color: #1C1917 !important;
+[data-theme="light"] .contact-item {
+    background: #FFFFFF !important;
+    border: 1px solid rgba(184, 134, 46, 0.2) !important;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .contact-icon {
+    background: linear-gradient(135deg, rgba(212, 168, 83, 0.22), rgba(201, 123, 42, 0.12)) !important;
+    border: 1px solid rgba(184, 134, 46, 0.35) !important;
+    box-shadow: 0 2px 8px rgba(184, 134, 46, 0.15) !important;
+}
+
+[data-theme="light"] .contact-item h3 {
+    color: #8F5904 !important;
+    font-weight: 700 !important;
 }
 
 [data-theme="light"] .contact-item p {
@@ -2055,21 +2298,43 @@ ul { list-style: none; }
     color: #1C1917 !important;
 }
 
+[data-theme="light"] .time.closed {
+    color: #DC2626 !important;
+    font-weight: 700 !important;
+}
+
 [data-theme="light"] .map-overlay-card {
     background: rgba(255, 255, 255, 0.96) !important;
-    border: 1px solid rgba(184, 134, 46, 0.3) !important;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.1) !important;
+    border: 1.5px solid rgba(184, 134, 46, 0.35) !important;
+    box-shadow: 0 6px 20px rgba(184, 134, 46, 0.18) !important;
 }
 
 [data-theme="light"] .map-overlay-name {
-    color: #1C1917 !important;
+    color: #8F5904 !important;
+    font-weight: 700 !important;
 }
 
 [data-theme="light"] .map-overlay-addr {
     color: #57534E !important;
 }
 
-/* CTA Banner (Preserve deep espresso background for contrast) */
+/* ── Secondary Buttons in Light Mode ── */
+[data-theme="light"] .btn-secondary {
+    background: #FFFFFF !important;
+    color: #8F5904 !important;
+    border: 1.5px solid rgba(184, 134, 46, 0.35) !important;
+    box-shadow: 0 2px 8px rgba(184, 134, 46, 0.08) !important;
+    font-weight: 600 !important;
+}
+
+[data-theme="light"] .btn-secondary:hover {
+    background: #FFF9EE !important;
+    border-color: #B8862E !important;
+    color: #6E4405 !important;
+    box-shadow: 0 4px 14px rgba(184, 134, 46, 0.18) !important;
+}
+
+/* ── CTA Banner (Preserve deep espresso background for contrast) ── */
 [data-theme="light"] .cta-banner {
     background: linear-gradient(135deg, #1C1917 0%, #292524 100%) !important;
 }
@@ -2085,7 +2350,7 @@ ul { list-style: none; }
     border-color: rgba(255, 255, 255, 0.15) !important;
 }
 
-/* Footer (Preserve rich charcoal) */
+/* ── Footer (Preserve rich charcoal) ── */
 [data-theme="light"] .footer {
     background: #121110 !important;
 }
@@ -2099,7 +2364,7 @@ ul { list-style: none; }
     color: #D4A853 !important;
 }
 
-/* Mobile Sticky Call Bar */
+/* ── Mobile Sticky Call Bar ── */
 [data-theme="light"] .sticky-call-bar {
     background: rgba(250, 247, 242, 0.96) !important;
     border-top: 1px solid rgba(184, 134, 46, 0.3) !important;
@@ -2110,5 +2375,69 @@ ul { list-style: none; }
     color: #1C1917 !important;
     border-color: rgba(184, 134, 46, 0.35) !important;
 }
+
+/* ── Shami AI Assistant in Light Mode ── */
+[data-theme="light"] .shami-ai-pill {
+    background: rgba(255, 255, 255, 0.96) !important;
+    color: #1C1917 !important;
+    border: 1.5px solid rgba(212, 168, 83, 0.45) !important;
+    box-shadow: 0 6px 22px rgba(184, 134, 46, 0.22) !important;
+}
+[data-theme="light"] .shami-ai-pill-gold {
+    color: #B45309 !important;
+}
+[data-theme="light"] .shami-ai-drawer {
+    background: #FAF7F2 !important;
+    border: 1.5px solid rgba(212, 168, 83, 0.35) !important;
+    box-shadow: 0 20px 60px rgba(184, 134, 46, 0.25), 0 0 0 1px rgba(0,0,0,0.05) !important;
+}
+[data-theme="light"] .shami-ai-messages {
+    background: #FAF7F2 !important;
+}
+[data-theme="light"] .shami-ai-msg.bot .shami-ai-msg-bubble {
+    background: #FFFFFF !important;
+    color: #1C1917 !important;
+    border: 1px solid rgba(184, 134, 46, 0.2) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;
+}
+[data-theme="light"] .shami-ai-msg.user .shami-ai-msg-bubble {
+    background: linear-gradient(135deg, #D4A853 0%, #C97B2A 100%) !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 2px 10px rgba(201, 123, 42, 0.3) !important;
+}
+[data-theme="light"] .shami-dish-card {
+    background: #FFFFFF !important;
+    border: 1px solid rgba(212, 168, 83, 0.35) !important;
+    box-shadow: 0 2px 8px rgba(184, 134, 46, 0.1) !important;
+}
+[data-theme="light"] .shami-dish-name {
+    color: #1C1917 !important;
+}
+[data-theme="light"] .shami-dish-price {
+    color: #B45309 !important;
+}
+[data-theme="light"] .shami-dish-desc {
+    color: #57534E !important;
+}
+[data-theme="light"] .shami-chip {
+    background: #FFFFFF !important;
+    color: #8F5904 !important;
+    border: 1px solid rgba(212, 168, 83, 0.35) !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04) !important;
+}
+[data-theme="light"] .shami-chip:hover {
+    background: #FFF9EE !important;
+    border-color: #B8862E !important;
+}
+[data-theme="light"] .shami-input-box {
+    background: #FFFFFF !important;
+    border: 1px solid rgba(184, 134, 46, 0.3) !important;
+    color: #1C1917 !important;
+}
+[data-theme="light"] .shami-input-area {
+    background: #FFFFFF !important;
+    border-top: 1px solid rgba(184, 134, 46, 0.2) !important;
+}
+
 
 
