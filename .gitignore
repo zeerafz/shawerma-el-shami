@@ -1,0 +1,8 @@
+# Temporary and zip archives
+*.zip
+upload/
+.system_generated/
+
+# Local preview scripts (keep local)
+run.bat
+run.py

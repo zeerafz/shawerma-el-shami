@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>About Us & Reviews — Shawerma El Shami | Authentic Syrian Shawarma</title>
+    <meta name="description" content="Learn about Shawerma El Shami in Temple Terrace, FL. Authentic Syrian shawarma recipes, hand-stacked rotating spits, housemade toum garlic whip, and customer reviews.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assistant.css">
+    <link rel="icon" href="images/logo.jpg" type="image/jpeg">
+    <script>
+        (function() {
+            try {
+                if (localStorage.getItem('shami-theme') === 'light' || 
+                   (!localStorage.getItem('shami-theme') && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                }
+            } catch(e) {}
+        })();
+    </script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <img src="images/logo.jpg" alt="Shawerma El Shami Logo" class="nav-logo-img">
+                <div class="logo-text">
+                    <span class="logo-en">Shawerma El Shami</span>
+                    <span class="logo-ar">شاورما الشامي</span>
+                </div>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link active">About &amp; Reviews</a></li>
+                <li><a href="index.html#menu" class="nav-link">Menu</a></li>
+                <li><a href="catering.html" class="nav-link">Catering</a></li>
+                <li><a href="index.html#contact" class="nav-link">Visit Us</a></li>
+                <li><a href="tel:8137699231" class="nav-cta">📞 Call to Order</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Switch theme" title="Toggle Light/Dark Theme">
+                    <span class="theme-icon">☀️</span>
+                </button>
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header style="padding: calc(var(--nav-height) + var(--space-3xl)) 0 var(--space-2xl); background: radial-gradient(circle at 50% 30%, #2A241C 0%, var(--color-dark) 80%); text-align: center; border-bottom: 1px solid rgba(212, 168, 83, 0.15);">
+        <div class="container">
+            <span class="section-tag">Our Heritage & Story</span>
+            <h1 class="section-title" style="margin-top: 8px;">The Taste of <em>Damascus</em></h1>
+            <p class="section-desc" style="max-width: 600px; margin: 0 auto;">Authentic Syrian street food crafted with ancestral traditions, marinated halal meats, and heartfelt Levant hospitality.</p>
+        </div>
+    </header>
+
+    <!-- About Content -->
+    <section class="about" style="padding-top: var(--space-3xl);">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-story">
+                    <h2 style="font-family: var(--font-display); font-size: 1.6rem; color: var(--color-gold); margin-bottom: 8px;">Our Story</h2>
+                    <p>At <strong>Shawerma El Shami (شاورما الشامي)</strong>, we are proud to bring the true soul of Syrian culinary heritage to Temple Terrace and the greater Tampa Bay community.</p>
+                    <p>True shawarma is an art form. Every morning, our halal beef and chicken are hand-stacked, marinated in ancestral spice blends infused with cardamom, sumac, coriander, and allspice, and slow-roasted on vertical rotating spits until juicy and aromatic.</p>
+                    <p>We slice the meat thin to order and wrap it in warm, lightly toasted Saj bread with crunchy pickled cucumbers and turnips, our house-whipped garlic toum, and a drizzle of tangy pomegranate molasses — pressed on a sizzling griddle to achieve that legendary crunch.</p>
+
+                    <div class="about-features">
+                        <div class="about-feature-item">
+                            <span class="about-feature-icon">🥙</span>
+                            <span>Hand-Stacked Halal Spits</span>
+                        </div>
+                        <div class="about-feature-item">
+                            <span class="about-feature-icon">🧄</span>
+                            <span>House-Whipped Toum &amp; Sauces</span>
+                        </div>
+                        <div class="about-feature-item">
+                            <span class="about-feature-icon">🥟</span>
+                            <span>Scratch Kitchen &amp; Fresh Saj</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-story" style="background: rgba(212, 168, 83, 0.04); border: 1px solid rgba(212, 168, 83, 0.18); border-radius: var(--radius-lg); padding: var(--space-2xl);">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
+                        <span style="font-size: 2rem;">⭐</span>
+                        <div>
+                            <h3 style="font-family: var(--font-display); font-size: 1.3rem; color: var(--color-gold); margin: 0;">5.0 Star Rated on Google</h3>
+                            <p style="font-size: 0.8rem; color: rgba(250, 245, 235, 0.6); margin: 0;">Verified Guest Reviews in Temple Terrace, FL</p>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.92rem; color: rgba(250, 245, 235, 0.85); line-height: 1.7;">"We treat every guest who walks through our doors like family visiting our home. Whether you're craving a quick lunch wrap, a family feast platter, or comforting sides, we guarantee unmatched freshness and genuine hospitality."</p>
+                    <div style="margin-top: 18px; display: flex; flex-wrap: wrap; gap: var(--space-sm);">
+                        <a href="https://g.page/r/CbhoYvNoSDHFEBM/review" target="_blank" rel="noopener" class="btn btn-google-review">
+                            ⭐ Leave a Google Review
+                        </a>
+                        <a href="index.html#menu" class="btn btn-primary">
+                            Explore The Menu
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customer Reviews Grid -->
+            <div class="reviews-header">
+                <span class="section-tag">Community Love</span>
+                <h2 style="font-family: var(--font-display); font-size: 2rem; color: var(--color-cream); margin-top: 6px;">Guest <em>Reviews</em></h2>
+            </div>
+
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div>
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">"Hands down the best shawarma in Tampa Bay! The chicken is unbelievably tender, the garlic sauce is out of this world, and the Saj bread has that authentic Syrian crunch. Reminds me of back home."</p>
+                    </div>
+                    <div class="review-author">
+                        <span class="review-name">Omar K.</span>
+                        <span class="review-source">📍 Google Review · 5.0 ★</span>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div>
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">"The beef shawarma combo is insane! Huge portions, the fries are crispy and seasoned with sumac, and that pomegranate sauce drizzle on the kebbeh is incredible. Must-visit place!"</p>
+                    </div>
+                    <div class="review-author">
+                        <span class="review-name">Sarah M.</span>
+                        <span class="review-source">📍 Google Review · 5.0 ★</span>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div>
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">"Everything here is fresh and made with love. The cheese samosas are crunchy and stretchy, the hummus with beef is rich and flavorful, and the staff treats you like family. 10/10!"</p>
+                    </div>
+                    <div class="review-author">
+                        <span class="review-name">David L.</span>
+                        <span class="review-source">📍 Google Review · 5.0 ★</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reviews-cta-wrap" style="margin-top: var(--space-xl);">
+                <a href="https://g.page/r/CbhoYvNoSDHFEBM/review" target="_blank" rel="noopener" class="btn btn-google-review btn-lg">
+                    ⭐ View More or Post a Google Review
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="images/logo.jpg" alt="Shawerma El Shami Logo" class="footer-logo-img">
+                        <div class="logo-text"><span class="logo-en">Shawerma El Shami</span><span class="logo-ar">شاورما الشامي</span></div>
+                    </div>
+                    <p>Authentic Syrian shawarma made with love, tradition, and the finest ingredients. Temple Terrace, Florida.</p>
+                </div>
+                <div class="footer-links-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="about.html">About &amp; Reviews</a></li>
+                        <li><a href="index.html#menu">Menu</a></li>
+                        <li><a href="catering.html">Catering</a></li>
+                        <li><a href="index.html#contact">Visit Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>11414 N 56th St</li>
+                        <li>Temple Terrace, FL 33617</li>
+                        <li><a href="tel:8137699231">(813) 769-9231</a></li>
+                        <li>Tue–Sun: 12 PM – 9:30 PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Shawerma El Shami. All rights reserved.</p>
+                <p class="footer-arabic">شاورما الشامي — مذاق الشام الأصيل</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="assistant.js" defer></script>
+</body>
+</html>

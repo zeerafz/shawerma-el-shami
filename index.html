@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Shawerma El Shami — Authentic Syrian Shawarma in Temple Terrace, FL</title>
+    <meta name="description" content="Shawerma El Shami serves the most authentic Syrian shawarma in Temple Terrace, Florida. Enjoy our legendary chicken & beef shawarma, platters, hummus, and more.">
+    <meta name="keywords" content="shawarma, shawerma, Syrian food, Middle Eastern restaurant, Temple Terrace, Tampa, halal, hummus">
+    <meta name="theme-color" content="#0F0E0C">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+    <link rel="apple-touch-icon" href="images/logo.jpg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assistant.css">
+    <script>
+        (function() {
+            try {
+                if (localStorage.getItem('shami-theme') === 'light' || 
+                   (!localStorage.getItem('shami-theme') && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                }
+            } catch(e) {}
+        })();
+    </script>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-inner">
+            <img src="images/logo.jpg" alt="Shawerma El Shami Logo" class="preloader-logo">
+            <span class="preloader-text">شاورما الشامي</span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo" aria-label="Shawerma El Shami Home">
+                <img src="images/logo.jpg" alt="Shawerma El Shami Logo" class="nav-logo-img">
+                <div class="logo-text">
+                    <span class="logo-en">Shawerma El Shami</span>
+                    <span class="logo-ar">شاورما الشامي</span>
+                </div>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About &amp; Reviews</a></li>
+                <li><a href="#menu" class="nav-link">Menu</a></li>
+                <li><a href="#catering" class="nav-link">Catering</a></li>
+                <li><a href="#contact" class="nav-link">Visit Us</a></li>
+                <li><a href="tel:8137699231" class="nav-cta">📞 Call to Order</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Switch theme" title="Toggle Light/Dark Theme">
+                    <span class="theme-icon">☀️</span>
+                </button>
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg">
+            <video
+                id="heroBgVideo"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="auto"
+                poster="images/beef-platter.jpeg"
+                aria-hidden="true">
+                <source src="images/hero.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-logo-wrapper">
+                <img src="images/logo.jpg" alt="Shawerma El Shami Logo" class="hero-logo-emblem">
+            </div>
+            <p class="hero-arabic">شاورما الشامي</p>
+            <p class="hero-subtitle">Authentic Syrian Shawarma · Temple Terrace, FL</p>
+            <div class="hero-actions">
+                <a href="#menu" class="btn btn-primary">View Full Menu</a>
+                <a href="tel:8137699231" class="btn btn-secondary">📞 (813) 769-9231</a>
+            </div>
+            <div class="hero-order-links">
+                <a href="https://www.doordash.com/store/shawarma-elshami-temple-terrace-25059818/23386373/"
+                   target="_blank" rel="noopener"
+                   class="btn btn-doordash"
+                   id="doordashBtn">
+                    <svg class="doordash-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.5 2C7.81 2 4 5.81 4 10.5c0 2.9 1.45 5.47 3.66 7.04L7 21l3.75-1.5A8.44 8.44 0 0012.5 19c4.69 0 8.5-3.81 8.5-8.5S17.19 2 12.5 2z"/></svg>
+                    Order on DoorDash
+                </a>
+                <a href="https://g.page/r/CbhoYvNoSDHFEBM/review"
+                   target="_blank" rel="noopener"
+                   class="btn btn-google-review"
+                   id="googleReviewBtn">
+                    <svg class="google-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                    Leave a Review
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About & Reviews Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Our Heritage</span>
+                <h2 class="section-title">The Taste of <em>Damascus</em></h2>
+                <p class="section-desc">Authentic Syrian recipes, hand-stacked rotating spits, and warm Levant hospitality.</p>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-story">
+                    <p>Welcome to <strong>Shawerma El Shami (شاورما الشامي)</strong>, Temple Terrace’s home for authentic Syrian street food. Every single day, our halal beef and chicken are hand-stacked, marinated in fragrant ancestral Levant spice blends, and slow-roasted on vertical rotating spits until juicy, tender, and lightly caramelized.</p>
+                    <p>We wrap our shawarma inside warm, fresh Saj bread with crisp Syrian pickles, housemade garlic toum whip, and a drizzle of tangy pomegranate molasses — toasted to golden perfection on the flat-top griddle just like the historic shawarma shops of Old Damascus.</p>
+                    
+                    <div class="about-features">
+                        <div class="about-feature-item">
+                            <span class="about-feature-icon">🥙</span>
+                            <span>Hand-Stacked Halal Spits</span>
+                        </div>
+                        <div class="about-feature-item">
+                            <span class="about-feature-icon">🧄</span>
+                            <span>House-Whipped Toum &amp; Sauces</span>
+                        </div>
+                        <div class="about-feature-item">
+                            <span class="about-feature-icon">🥟</span>
+                            <span>Scratch Kitchen &amp; Fresh Saj</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-story" style="background: rgba(212, 168, 83, 0.04); border: 1px solid rgba(212, 168, 83, 0.15); border-radius: var(--radius-lg); padding: var(--space-xl);">
+                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                        <span style="font-size: 1.6rem;">⭐</span>
+                        <div>
+                            <h3 style="font-family: var(--font-display); font-size: 1.15rem; color: var(--color-gold); margin: 0;">5.0 Star Rated on Google</h3>
+                            <p style="font-size: 0.78rem; color: rgba(250, 245, 235, 0.6); margin: 0;">Loved by locals across Temple Terrace &amp; Tampa Bay</p>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.88rem; color: rgba(250, 245, 235, 0.8); line-height: 1.6;">"Food is our passion, and community is our family. From the first bite of our crispy shawarma wrap to our comforting platters and handmade samosas, we make sure every guest feels right at home."</p>
+                    <div style="margin-top: 14px;">
+                        <a href="https://g.page/r/CbhoYvNoSDHFEBM/review" target="_blank" rel="noopener" class="btn btn-secondary" style="font-size: 0.8rem; padding: 8px 16px;">
+                            ⭐ Read Google Reviews
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customer Reviews Grid -->
+            <div class="reviews-header">
+                <span class="section-tag">What Our Guests Say</span>
+                <h3 style="font-family: var(--font-display); font-size: 1.8rem; color: var(--color-cream); margin-top: 6px;">Customer <em>Reviews</em></h3>
+            </div>
+
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div>
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">"Hands down the best shawarma in Tampa Bay! The chicken is unbelievably tender, the garlic sauce is out of this world, and the Saj bread has that authentic Syrian crunch. Reminds me of back home."</p>
+                    </div>
+                    <div class="review-author">
+                        <span class="review-name">Omar K.</span>
+                        <span class="review-source">📍 Google Review · 5.0 ★</span>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div>
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">"The beef shawarma combo is insane! Huge portions, the fries are crispy and seasoned with sumac, and that pomegranate sauce drizzle on the kebbeh is incredible. Must-visit place!"</p>
+                    </div>
+                    <div class="review-author">
+                        <span class="review-name">Sarah M.</span>
+                        <span class="review-source">📍 Google Review · 5.0 ★</span>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div>
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">"Everything here is fresh and made with love. The cheese samosas are crunchy and stretchy, the hummus with beef is rich and flavorful, and the staff treats you like family. 10/10!"</p>
+                    </div>
+                    <div class="review-author">
+                        <span class="review-name">David L.</span>
+                        <span class="review-source">📍 Google Review · 5.0 ★</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reviews-cta-wrap">
+                <a href="https://g.page/r/CbhoYvNoSDHFEBM/review" target="_blank" rel="noopener" class="btn btn-google-review">
+                    ⭐ Leave Us a Google Review
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Our Menu</span>
+                <h2 class="section-title">The Full <em>Menu</em></h2>
+                <p class="section-desc">Everything is made fresh daily with authentic Syrian recipes.</p>
+            </div>
+
+            <!-- Menu Tabs -->
+            <div class="menu-tabs">
+                <button class="menu-tab active" data-filter="all">All</button>
+                <button class="menu-tab" data-filter="sandwiches">Sandwiches</button>
+                <button class="menu-tab" data-filter="combos">Combos</button>
+                <button class="menu-tab" data-filter="platters">Platters</button>
+                <button class="menu-tab" data-filter="family">Family</button>
+                <button class="menu-tab" data-filter="hummus">Hummus</button>
+                <button class="menu-tab" data-filter="appetizers">Appetizers</button>
+                <button class="menu-tab" data-filter="sauces">Sauces</button>
+                <button class="menu-tab" data-filter="sides">Sides</button>
+                <button class="menu-tab" data-filter="drinks">Drinks</button>
+            </div>
+
+            <div class="menu-grid" id="menuGrid">
+
+                <!-- SANDWICHES — 2 cards with expandable size options -->
+                <div class="menu-card menu-card--combo" data-category="sandwiches">
+                    <div class="menu-card-img">
+                        <img src="images/beef-shawarma.jpg" alt="Beef Shawarma Sandwich" loading="lazy">
+                        <span class="menu-badge signature">Signature</span>
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-header"><h3>Beef Shawarma Sandwich</h3><span class="menu-price">from $9.99</span></div>
+                        <p class="menu-item-desc">Beef shawarma sandwich contains tahini sauce, tomatoes, pickles, onions, and parsley (mixed).</p>
+                        <button class="combo-toggle" aria-expanded="false" data-target="beef-sand-sizes">
+                            <span class="combo-toggle-text">See Sizes &amp; Prices</span>
+                            <svg class="combo-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                        <div class="combo-sizes" id="beef-sand-sizes">
+                            <div class="combo-size-row">
+                                <div class="combo-size-info"><span class="combo-size-name">Regular</span><span class="combo-size-desc">Classic size sandwich</span></div>
+                                <span class="combo-size-price">$9.99</span>
+                            </div>
+                            <div class="combo-size-row">
+                                <div class="combo-size-info"><span class="combo-size-name">Jumbo</span><span class="combo-size-desc">Contains tahini sauce, tomatoes, pickles, onions and parsley (mixed). Jumbo is 8" long and bigger than regular sandwich.</span></div>
+                                <span class="combo-size-price">$13.99</span>
+                            </div>
+                            <div class="combo-size-row">
+                                <div class="combo-size-info"><span class="combo-size-name">Extra Jumbo</span><span class="combo-size-desc">Contains tahini sauce, tomatoes, pickles, onions, and parsley (mixed). Jumbo is 8" long and double beef than regular sandwich.</span></div>
+                                <span class="combo-size-price">$15.99</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card menu-card--combo" data-category="sandwiches">
+                    <div class="menu-card-img">
+                        <img src="images/sand.jpeg" alt="Chicken Shawarma Sandwich" loading="lazy">
+                        <span class="menu-badge popular">Most Popular</span>
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-header"><h3>Chicken Shawarma Sandwich</h3><span class="menu-price">from $8.99</span></div>
+                        <p class="menu-item-desc">Chicken shawarma sandwich. Contains garlic sauce and pickles.</p>
+                        <button class="combo-toggle" aria-expanded="false" data-target="chicken-sand-sizes">
+                            <span class="combo-toggle-text">See Sizes &amp; Prices</span>
+                            <svg class="combo-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                        <div class="combo-sizes" id="chicken-sand-sizes">
+                            <div class="combo-size-row">
+                                <div class="combo-size-info"><span class="combo-size-name">Regular</span><span class="combo-size-desc">Classic size sandwich</span></div>
+                                <span class="combo-size-price">$8.99</span>
+                            </div>
+                            <div class="combo-size-row">
+                                <div class="combo-size-info"><span class="combo-size-name">Jumbo</span><span class="combo-size-desc">Contains garlic sauce and pickles. Jumbo is 8" long and bigger than regular sandwich.</span></div>
+                                <span class="combo-size-price">$12.99</span>
+                            </div>
+                            <div class="combo-size-row">
+                                <div class="combo-size-info"><span class="combo-size-name">Extra Jumbo</span><span class="combo-size-desc">Contains garlic sauce and pickles. Extra jumbo is 8" long and double chicken inside.</span></div>
+                                <span class="combo-size-price">$14.99</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <!-- COMBOS — 2 cards with expandable size options -->
+                <div class="menu-card menu-card--combo" data-category="combos">
+                    <div class="menu-card-img">
+                        <img src="images/beef-combo.jpeg" alt="Beef Shawarma Combo" loading="lazy">
+                        <span class="menu-badge signature">Signature</span>
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-header"><h3>Beef Shawarma Combo</h3><span class="menu-price">from $13.99</span></div>
+                        <p class="menu-item-desc">Comes with (french fries and 1 soda). Contains tahini sauce, tomatoes, pickles, onions, and parsley (mixed).</p>
+                        <button class="combo-toggle" aria-expanded="false" data-target="beef-combo-sizes">
+                            <span class="combo-toggle-text">See Sizes &amp; Prices</span>
+                            <svg class="combo-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                        <div class="combo-sizes" id="beef-combo-sizes">
+                            <div class="combo-size-row">
+                                <div class="combo-size-info">
+                                    <span class="combo-size-name">Regular</span>
+                                    <span class="combo-size-desc">Comes with (french fries and 1 soda). Contains tahini sauce, tomatoes, pickles, onions, and parsley (mixed).</span>
+                                </div>
+                                <span class="combo-size-price">$13.99</span>
+                            </div>
+                            <div class="combo-size-row">
+                                <div class="combo-size-info">
+                                    <span class="combo-size-name">Jumbo</span>
+                                    <span class="combo-size-desc">Comes with (french fries and 1 soda) inside - tahini sauce, tomatoes, pickles, onions and parsley (mixed). Jumbo is 8" long and bigger than regular sandwich.</span>
+                                </div>
+                                <span class="combo-size-price">$16.99</span>
+                            </div>
+                            <div class="combo-size-row">
+                                <div class="combo-size-info">
+                                    <span class="combo-size-name">Extra Jumbo</span>
+                                    <span class="combo-size-desc">Comes with (french fries and 1 soda). Contains tahini sauce, tomatoes, pickles, onions and parsley (mixed). Jumbo is 8" long and double beef than regular sandwich.</span>
+                                </div>
+                                <span class="combo-size-price">$18.99</span>
+                            </div>
+                            <div class="combo-size-row">
+                                <div class="combo-size-info">
+                                    <span class="combo-size-name">Double</span>
+                                    <span class="combo-size-desc">Comes with (french fries and 1 soda) 2 sandwiches in the box contains tahini sauce, tomatoes, pickles, onions, and parsley (mixed).</span>
+                                </div>
+                                <span class="combo-size-price">$23.99</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card menu-card--combo" data-category="combos">
+                    <div class="menu-card-img">
+                        <img src="images/chicken-shawarma.jpg" alt="Chicken Shawarma Combo" loading="lazy">
+                        <span class="menu-badge popular">Best Value</span>
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-header"><h3>Chicken Shawarma Combo</h3><span class="menu-price">from $12.99</span></div>
+                        <p class="menu-item-desc">Comes with (french fries and 1 soda). Contains garlic sauce and pickles.</p>
+                        <button class="combo-toggle" aria-expanded="false" data-target="chicken-combo-sizes">
+                            <span class="combo-toggle-text">See Sizes &amp; Prices</span>
+                            <svg class="combo-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                        <div class="combo-sizes" id="chicken-combo-sizes">
+                            <div class="combo-size-row">
+                                <div class="combo-size-info">
+                                    <span class="combo-size-name">Regular</span>
+                                    <span class="combo-size-desc">Comes with (french fries and 1 soda). Contains garlic sauce and pickles.</span>
+                                </div>
+                                <span class="combo-size-price">$12.99</span>
+                            </div>
+                            <div class="combo-size-row">
+                                <div class="combo-size-info">
+                                    <span class="combo-size-name">Jumbo</span>
+                                    <span class="combo-size-desc">Comes with (french fries and 1 soda). Contains garlic sauce pickles. Jumbo is 8" long and bigger than regular sandwich.</span>
+                                </div>
+                                <span class="combo-size-price">$15.99</span>
+                            </div>
+                            <div class="combo-size-row">
+                                <div class="combo-size-info">
+                                    <span class="combo-size-name">Extra Jumbo</span>
+                                    <span class="combo-size-desc">Comes with (french fries and 1 soda). Contains garlic sauce pickles. Extra jumbo 8" long and double chicken inside.</span>
+                                </div>
+                                <span class="combo-size-price">$17.99</span>
+                            </div>
+                            <div class="combo-size-row">
+                                <div class="combo-size-info">
+                                    <span class="combo-size-name">Double</span>
+                                    <span class="combo-size-desc">Comes with (french fries and 1 soda) 2 sandwiches in the box. Contains garlic sauce and pickles.</span>
+                                </div>
+                                <span class="combo-size-price">$22.99</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- PLATTERS -->
+                <div class="menu-card" data-category="platters">
+                    <div class="menu-card-img">
+                        <img src="images/beef-platter.jpeg" alt="Beef Loose Platter" loading="lazy">
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-header"><h3>Beef Loose Platter</h3><span class="menu-price">$15.99</span></div>
+                        <p class="menu-item-desc">Beef sliced loose (not wrapped) comes with french fries and 1 soda on the side - tahini sauce, tomatoes, pickles, onions and parsley (mixed) wrap bread.</p>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-category="platters">
+                    <div class="menu-card-img">
+                        <img src="images/chicken-platter.jpeg" alt="Chicken Loose Platter" loading="lazy">
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-header"><h3>Chicken Loose Platter</h3><span class="menu-price">$15.99</span></div>
+                        <p class="menu-item-desc">Chicken sliced loose (not wrapped) comes with (french fries and 1 soda) on the side - garlic sauce, pickles, vegetables, and wrapped bread.</p>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-category="platters">
+                    <div class="menu-card-img no-photo">
+                        <div class="emoji-placeholder">🍽️</div>
+                        <span class="placeholder-label">Photo Coming</span>
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-header"><h3>Mix &amp; Match Platter</h3><span class="menu-price">$16.99</span></div>
+                        <p class="menu-item-note">Beef + Chicken</p>
+                        <p class="menu-item-desc">Beef and chicken sliced loose (not wrapped). Drink options include brisk, water, or various sodas including Canada Dry, Diet Coke, Coke, Sprite.</p>
+                    </div>
+                </div>
+
+                <!-- FAMILY -->
+                <div class="menu-card" data-category="family">
+                    <div class="menu-card-img no-photo">
+                        <div class="emoji-placeholder">👨‍👩‍👧‍👦</div>
+                        <span class="placeholder-label">Photo Coming</span>
+                        <span class="menu-badge signature">Feast for 6</span>
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-header"><h3>Mix Shawarma Family Platter</h3><span class="menu-price">$80.00</span></div>
+                        <p class="menu-item-note">Feeds 5–6 • 6 Sandwiches + Fries + 6 Drinks</p>
+                        <p class="menu-item-desc">The ultimate Syrian feast! Includes 3 beef shawarma sandwiches, 3 chicken shawarma sandwiches, a generous portion of seasoned crispy fries, and 6 cold drinks, all packed in a large family platter.</p>
+                    </div>
+                </div>
+
+                <!-- HUMMUS SPECIALTIES -->
+                <div class="menu-card" data-category="hummus">
+                    <div class="menu-card-img">
+                        <img src="images/hum-beef.jpeg" alt="Hummus with Beef Shawarma" loading="lazy">
+                        <span class="menu-badge signature">Chef's Pick</span>
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-header"><h3>Hummus w/ Beef Shawarma</h3><span class="menu-price">$15.99</span></div>
+                        <p class="menu-item-note">Includes warm pita bread &amp; side of pickles</p>
+                        <p class="menu-item-desc">Creamy Syrian hummus topped with tender, freshly carved spiced beef shawarma and extra virgin olive oil. Served with warm pita bread and a side of pickles.</p>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-category="hummus">
+                    <div class="menu-card-img">
+                        <img src="images/hum-chicken.jpeg" alt="Hummus with Chicken Shawarma" loading="lazy">
+                        <span class="menu-badge popular">Popular</span>
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-header"><h3>Hummus w/ Chicken Shawarma</h3><span class="menu-price">$14.99</span></div>
+                        <p class="menu-item-note">Includes warm pita bread &amp; side of pickles</p>
+                        <p class="menu-item-desc">Velvety smooth Syrian hummus crowned with juicy, carved-to-order chicken shawarma and olive oil. Served with warm pita bread and a side of pickles.</p>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-category="hummus">
+                    <div class="menu-card-img">
+                        <img src="images/hummus.jpeg" alt="Hummus" loading="lazy">
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-header"><h3>Hummus</h3><span class="menu-price">$7.99</span></div>
+                        <p class="menu-item-note">Includes warm pita bread &amp; side of pickles</p>
+                        <p class="menu-item-desc">Traditional Syrian recipe made from blended chickpeas, rich tahini, fresh lemon, and garlic, finished with extra virgin olive oil. Served with warm pita bread and a side of pickles.</p>
+                    </div>
+                </div>
+
+                <!-- APPETIZERS -->
+                <div class="menu-card" data-category="appetizers">
+                    <div class="menu-card-img">
+                        <img src="images/fattoush.jpeg" alt="Fattoush Salad" loading="lazy">
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-header"><h3>Fattoush</h3><span class="menu-price">$7.99</span></div>
+                        <p class="menu-item-desc">Fresh crisp greens, diced tomatoes, cucumbers, and radishes tossed with crunchy pita chips, sumac, and pomegranate molasses.</p>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-category="appetizers">
+                    <div class="menu-card-img">
+                        <img src="images/kebbeh.jpeg" alt="Fried Kebbeh 1 PC" loading="lazy">
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-header"><h3>Fried Kebbeh (1 PC)</h3><span class="menu-price">$4.00</span></div>
+                        <p class="menu-item-desc">Handcrafted crispy bulgur shell stuffed with seasoned ground beef, onions, fried almonds, and aromatic Syrian spices, fried to a golden crunch.</p>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-category="appetizers">
+                    <div class="menu-card-img no-photo">
+                        <div class="emoji-placeholder">🫓</div>
+                        <span class="placeholder-label">Photo Coming</span>
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-header"><h3>Fried Kebbeh (4 PC)</h3><span class="menu-price">$15.00</span></div>
+                        <p class="menu-item-note">Best for sharing • 4 Pieces</p>
+                        <p class="menu-item-desc">Four golden, crispy bulgur shells stuffed with seasoned spiced beef, onions, and crunchy fried almonds. Perfect as a shared starter for the table.</p>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-category="appetizers">
+                    <div class="menu-card-img no-photo">
+                        <div class="emoji-placeholder">🫓</div>
+                        <span class="placeholder-label">Photo Coming</span>
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-header"><h3>Kebbeh Shawarma (1 PC)</h3><span class="menu-price">$7.99</span></div>
+                        <p class="menu-item-note">Chicken or Beef</p>
+                        <p class="menu-item-desc">A unique house specialty! Golden crispy kebbeh shell with fried almonds, stuffed with your choice of savory chicken or beef shawarma and finished with our signature sauce drizzle.</p>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-category="appetizers">
+                    <div class="menu-card-img">
+                        <img src="images/beef-samosa.jpeg" alt="Beef Samosa" loading="lazy">
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-header"><h3>Beef Samosa (1 PC)</h3><span class="menu-price">$2.99</span></div>
+                        <p class="menu-item-desc">Crispy golden pastry triangle filled with warmly spiced ground beef, onions, and Middle Eastern herbs.</p>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-category="appetizers">
+                    <div class="menu-card-img">
+                        <img src="images/cheese-samosa.jpeg" alt="Cheese Samosa" loading="lazy">
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-header"><h3>Cheese Samosa (1 PC)</h3><span class="menu-price">$2.99</span></div>
+                        <p class="menu-item-desc">Flaky, golden-fried pastry triangle stuffed with a rich, savory blend of Mediterranean cheeses and fragrant herbs.</p>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-category="appetizers">
+                    <div class="menu-card-img no-photo">
+                        <div class="emoji-placeholder">🫓</div>
+                        <span class="placeholder-label">Photo Coming</span>
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-header"><h3>Mix Kebbeh</h3><span class="menu-price">$27.00</span></div>
+                        <p class="menu-item-note">6 Pieces • 4 Fried Kebbeh + 2 Kebbeh Shawarma</p>
+                        <p class="menu-item-desc">The ultimate kebbeh sampler platter! Includes 4 classic fried kebbeh stuffed with spiced beef and fried almonds, plus 2 signature kebbeh shawarma — one filled with chicken shawarma and one with beef shawarma. Perfect for sharing!</p>
+                    </div>
+                </div>
+
+                <!-- SAUCES -->
+                <div class="menu-card" data-category="sauces">
+                    <div class="menu-card-img">
+                        <img src="images/sauce-garlic.jpeg" alt="Garlic Sauce" loading="lazy">
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-header"><h3>Garlic Sauce</h3><span class="menu-price">$0.75</span></div>
+                        <p class="menu-item-note">Per cup</p>
+                        <p class="menu-item-desc">2-oz cup.</p>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-category="sauces">
+                    <div class="menu-card-img">
+                        <img src="images/sauce-hot-garlic.jpeg" alt="Hot Garlic Sauce" loading="lazy">
+                        <span class="menu-badge signature">Spicy</span>
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-header"><h3>Hot Garlic Sauce</h3><span class="menu-price">$0.75</span></div>
+                        <p class="menu-item-note">Per cup</p>
+                        <p class="menu-item-desc">2-oz cup.</p>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-category="sauces">
+                    <div class="menu-card-img">
+                        <img src="images/sauce-pomo.jpeg" alt="Pomegranate Sauce" loading="lazy">
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-header"><h3>Pomegranate Sauce</h3><span class="menu-price">$0.75</span></div>
+                        <p class="menu-item-note">Per cup</p>
+                        <p class="menu-item-desc">2-oz cup.</p>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-category="sauces">
+                    <div class="menu-card-img">
+                        <img src="images/sauce-tahini.jpeg" alt="Tahini Sauce" loading="lazy">
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-header"><h3>Tahini Sauce</h3><span class="menu-price">$0.75</span></div>
+                        <p class="menu-item-note">Per cup</p>
+                        <p class="menu-item-desc">2-oz cup.</p>
+                    </div>
+                </div>
+
+                <!-- SIDES -->
+                <div class="menu-card" data-category="sides">
+                    <div class="menu-card-img no-photo">
+                        <div class="emoji-placeholder">🍟</div>
+                        <span class="placeholder-label">Photo Coming</span>
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-header"><h3>Small Fries</h3><span class="menu-price">$3.99</span></div>
+                        <p class="menu-item-desc">Golden, crispy French fries tossed in our signature Middle Eastern spice blend. Crispy outside, fluffy inside — perfect for dipping in garlic sauce.</p>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-category="sides">
+                    <div class="menu-card-img no-photo">
+                        <div class="emoji-placeholder">🍟</div>
+                        <span class="placeholder-label">Photo Coming</span>
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-header"><h3>Medium Fries</h3><span class="menu-price">$4.99</span></div>
+                        <p class="menu-item-desc">A generous portion of hot, golden crispy fries tossed in our signature spice seasoning. Crispy outside, fluffy inside, and great for sharing.</p>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-category="sides">
+                    <div class="menu-card-img no-photo">
+                        <div class="emoji-placeholder">🍟</div>
+                        <span class="placeholder-label">Photo Coming</span>
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-header"><h3>Large Fries</h3><span class="menu-price">$7.99</span></div>
+                        <p class="menu-item-desc">A party-sized basket of golden, crispy French fries tossed in our signature Middle Eastern spice blend. Perfect for the whole table.</p>
+                    </div>
+                </div>
+
+                <!-- DRINKS -->
+                <div class="menu-card" data-category="drinks">
+                    <div class="menu-card-img">
+                        <img src="images/water.jpg" alt="Bottled Water" loading="lazy">
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-header"><h3>Water</h3><span class="menu-price">$1.50</span></div>
+                    </div>
+                </div>
+
+                <div class="menu-card menu-card--combo" data-category="drinks">
+                    <div class="menu-card-img">
+                        <img src="images/soda.jpeg" alt="Soda" loading="lazy">
+                        <span class="menu-badge popular">8 Flavors</span>
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-header"><h3>Soda</h3><span class="menu-price">$2.00</span></div>
+                        <p class="menu-item-desc">Chilled can soda available in 8 refreshing flavors. Choose your favorite at pickup or dine-in.</p>
+                        <button class="combo-toggle" aria-expanded="false" data-target="soda-flavors">
+                            <span class="combo-toggle-text">See Available Flavors (8)</span>
+                            <svg class="combo-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                        <div class="combo-sizes" id="soda-flavors">
+                            <div class="combo-size-row">
+                                <div class="combo-size-info"><span class="combo-size-name">Cola</span><span class="combo-size-desc">Classic crisp cola</span></div>
+                                <span class="combo-size-price">🥤</span>
+                            </div>
+                            <div class="combo-size-row">
+                                <div class="combo-size-info"><span class="combo-size-name">Cola Zero</span><span class="combo-size-desc">Zero sugar, full flavor</span></div>
+                                <span class="combo-size-price">🥤</span>
+                            </div>
+                            <div class="combo-size-row">
+                                <div class="combo-size-info"><span class="combo-size-name">Lemon-Lime</span><span class="combo-size-desc">Zesty citrus sparkle</span></div>
+                                <span class="combo-size-price">🍋</span>
+                            </div>
+                            <div class="combo-size-row">
+                                <div class="combo-size-info"><span class="combo-size-name">Lemon-Lime Zero</span><span class="combo-size-desc">Zero sugar citrus sparkle</span></div>
+                                <span class="combo-size-price">🍋</span>
+                            </div>
+                            <div class="combo-size-row">
+                                <div class="combo-size-info"><span class="combo-size-name">Orange</span><span class="combo-size-desc">Sweet and fizzy orange soda</span></div>
+                                <span class="combo-size-price">🍊</span>
+                            </div>
+                            <div class="combo-size-row">
+                                <div class="combo-size-info"><span class="combo-size-name">Apple</span><span class="combo-size-desc">Crisp sparkling apple soda</span></div>
+                                <span class="combo-size-price">🍏</span>
+                            </div>
+                            <div class="combo-size-row">
+                                <div class="combo-size-info"><span class="combo-size-name">Lime</span><span class="combo-size-desc">Tangy fresh lime sparkle</span></div>
+                                <span class="combo-size-price">🍈</span>
+                            </div>
+                            <div class="combo-size-row">
+                                <div class="combo-size-info"><span class="combo-size-name">Berries</span><span class="combo-size-desc">Sweet mixed wild berry soda</span></div>
+                                <span class="combo-size-price">🫐</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-card" data-category="drinks">
+                    <div class="menu-card-img no-photo">
+                        <div class="emoji-placeholder">🥛</div>
+                        <span class="placeholder-label">Photo Coming</span>
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-header"><h3>Ayran Yogurt</h3><span class="menu-price">$3.00</span></div>
+                        <p class="menu-item-desc">Traditional chilled Syrian savory yogurt beverage with a touch of salt. Creamy and the perfect pairing for shawarma.</p>
+                    </div>
+                </div>
+
+            </div><!-- /menu-grid -->
+
+            <div class="menu-note">
+                <p>📞 Call us at <a href="tel:8137699231">(813) 769-9231</a> to place your order or ask about daily specials.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catering Section -->
+    <section id="catering" class="catering">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Events &amp; Large Orders</span>
+                <h2 class="section-title">Catering The <em>Shami Way</em></h2>
+                <p class="section-desc">Authentic Syrian feast platters, wrap trays, and scratch-made mezza for any gathering.</p>
+            </div>
+
+            <p class="catering-lead">
+                Whether you're hosting an office luncheon, wedding party, birthday celebration, or family gathering, Shawerma El Shami provides full-service catering tailored to your crowd. Fresh, hot, and packed with Levant flavor.
+            </p>
+
+            <div class="catering-grid">
+                <div class="catering-card">
+                    <span class="catering-card-badge">Most Popular</span>
+                    <div style="font-size: 2rem; margin: 4px 0;">🌯</div>
+                    <h3>Shawarma Wrap Trays</h3>
+                    <p>Large platters of cut-to-order Beef &amp; Chicken Shawarma wraps, sliced into party-sized portions. Served with house pickles and plenty of fresh garlic toum.</p>
+                    <span class="catering-card-servings">Ideal for 10–50+ guests</span>
+                </div>
+
+                <div class="catering-card">
+                    <span class="catering-card-badge">Best Value</span>
+                    <div style="font-size: 2rem; margin: 4px 0;">🍽️</div>
+                    <h3>Family &amp; Group Feasts</h3>
+                    <p>Generous mountains of loose slow-roasted beef &amp; chicken shawarma served over aromatic Syrian yellow rice, accompanied by crisp fattoush salad and warm pita.</p>
+                    <span class="catering-card-servings">Feeds groups of 8 to 40</span>
+                </div>
+
+                <div class="catering-card">
+                    <span class="catering-card-badge">Crowd Favorite</span>
+                    <div style="font-size: 2rem; margin: 4px 0;">🥟</div>
+                    <h3>Hot Mezza &amp; Appetizer Trays</h3>
+                    <p>Crispy golden Fried Kebbeh, handmade flaky Beef &amp; Cheese Samosas, and large platters of silky smooth hummus topped with tender shawarma meat.</p>
+                    <span class="catering-card-servings">Flexible portion sizes</span>
+                </div>
+
+                <div class="catering-card">
+                    <span class="catering-card-badge">Add-On</span>
+                    <div style="font-size: 2rem; margin: 4px 0;">🥫</div>
+                    <h3>The Signature Sauce Bar</h3>
+                    <p>Pints and quarts of our housemade Garlic Toum, Hot Garlic Sauce, sweet &amp; tangy Pomegranate Molasses, and rich Tahini dip to elevate your feast.</p>
+                    <span class="catering-card-servings">Available in half-pint &amp; pint tubs</span>
+                </div>
+            </div>
+
+            <!-- Dedicated Catering Contact Card -->
+            <div class="catering-contact-box">
+                <span class="section-tag" style="background: rgba(212,168,83,0.15); color: var(--color-gold);">Direct Catering Line</span>
+                <h3 style="margin-top: 10px;">Ready to Plan Your Catering Order?</h3>
+                <p>Call our dedicated catering coordinator directly to customize your menu, request special dietary accommodations, and schedule delivery or pickup.</p>
+                
+                <div>
+                    <a href="tel:+18133304632" class="catering-phone-highlight">
+                        <span>📞</span> +1 (813) 330-4632
+                    </a>
+                </div>
+
+                <div class="catering-actions">
+                    <a href="tel:+18133304632" class="btn btn-primary btn-lg">
+                        📞 Call Catering: (813) 330-4632
+                    </a>
+                    <a href="https://wa.me/18133304632?text=Hello%2C%20I%20am%20interested%20in%20catering%20orders%20from%20Shawerma%20El%20Shami" target="_blank" rel="noopener" class="btn btn-secondary btn-lg">
+                        💬 Message on WhatsApp
+                    </a>
+                </div>
+
+                <p class="catering-note">
+                    ℹ️ For large catering orders, we recommend contacting us 24–48 hours in advance. For regular daily orders, please call our restaurant line at (813) 769-9231.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <span class="section-tag">Visit Us</span>
+                    <h2 class="section-title">Come <em>Find</em> Us</h2>
+                    <div class="about-divider"><span>&#x2726;</span></div>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div><h3>Location</h3><p>11414 N 56th St<br>Temple Terrace, FL 33617</p></div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📞</div>
+                            <div><h3>Phone</h3><p><a href="tel:8137699231">(813) 769-9231</a></p></div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">🕐</div>
+                            <div>
+                                <h3>Hours</h3>
+                                <div class="hours-grid">
+                                    <span class="day">Monday</span><span class="time closed">Closed</span>
+                                    <span class="day">Tuesday</span><span class="time">12:00 PM – 9:30 PM</span>
+                                    <span class="day">Wednesday</span><span class="time">12:00 PM – 9:30 PM</span>
+                                    <span class="day">Thursday</span><span class="time">12:00 PM – 9:30 PM</span>
+                                    <span class="day">Friday</span><span class="time">12:00 PM – 9:30 PM</span>
+                                    <span class="day">Saturday</span><span class="time">12:00 PM – 9:30 PM</span>
+                                    <span class="day">Sunday</span><span class="time">12:00 PM – 9:30 PM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-actions">
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=11414+N+56th+St+Temple+Terrace+FL+33617" target="_blank" rel="noopener" class="btn btn-primary">Get Directions</a>
+                        <a href="tel:8137699231" class="btn btn-secondary">📞 Call to Order</a>
+                    </div>
+                </div>
+                <div class="contact-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3523.5!2d-82.3955!3d28.0631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDAzJzQ3LjQiTiA4MsKwMjMnNDMuOCJX!5e0!3m2!1sen!2sus!4v1234567890" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" title="Map to Shawerma El Shami"></iframe>
+                    <div class="map-overlay-card">
+                        <p class="map-overlay-name">Shawerma El Shami</p>
+                        <p class="map-overlay-addr">11414 N 56th St, Temple Terrace</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Order?</h2>
+                <p>Order online via DoorDash, call us, or come dine in!</p>
+                <div class="cta-buttons">
+                    <a href="https://www.doordash.com/store/shawarma-elshami-temple-terrace-25059818/23386373/"
+                       target="_blank" rel="noopener"
+                       class="btn btn-doordash btn-lg">Order on DoorDash</a>
+                    <a href="tel:8137699231" class="btn btn-primary btn-lg">📞 Call — (813) 769-9231</a>
+                </div>
+                <div class="cta-buttons" style="margin-top: 0.75rem;">
+                    <a href="https://g.page/r/CbhoYvNoSDHFEBM/review"
+                       target="_blank" rel="noopener"
+                       class="btn btn-google-review">⭐ Leave Us a Google Review</a>
+                </div>
+                <div class="delivery-badges">
+                    <span class="delivery-badge">🛵 DoorDash Delivery</span>
+                    <span class="delivery-badge">📞 Phone Orders</span>
+                    <span class="delivery-badge">🏃 Pickup Available</span>
+                    <span class="delivery-badge">🍽️ Dine-In Welcome</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="images/logo.jpg" alt="Shawerma El Shami Logo" class="footer-logo-img">
+                        <div class="logo-text"><span class="logo-en">Shawerma El Shami</span><span class="logo-ar">شاورما الشامي</span></div>
+                    </div>
+                    <p>Authentic Syrian shawarma made with love, tradition, and the finest ingredients. Temple Terrace, Florida.</p>
+                </div>
+                <div class="footer-links-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About &amp; Reviews</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#catering">Catering</a></li>
+                        <li><a href="#contact">Visit Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>11414 N 56th St</li>
+                        <li>Temple Terrace, FL 33617</li>
+                        <li><a href="tel:8137699231">(813) 769-9231</a></li>
+                        <li>Tue–Sun: 12 PM – 9:30 PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Shawerma El Shami. All rights reserved.</p>
+                <p class="footer-arabic">شاورما الشامي — مذاق الشام الأصيل</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Mobile Call Bar -->
+    <div id="stickyCallBar" class="sticky-call-bar" aria-label="Quick mobile action bar">
+        <a href="tel:8137699231" class="sticky-call-btn">
+            <span>📞</span> Call to Order — (813) 769-9231
+        </a>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=11414+N+56th+St+Temple+Terrace+FL+33617" target="_blank" rel="noopener" class="sticky-directions-btn" aria-label="Get Directions">
+            📍
+        </a>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="assistant.js" defer></script>
+</body>
+</html>

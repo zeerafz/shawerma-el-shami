@@ -1,0 +1,697 @@
+/* ===================================================
+   SHAMI AI — Menu Assistant Styles
+   Shawerma El Shami Aesthetic: Dark Charcoal & Warm Gold
+   =================================================== */
+
+/* Floating Launcher Button */
+.shami-ai-launcher {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.45));
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.shami-ai-launcher:hover {
+    transform: translateY(-3px) scale(1.03);
+}
+
+.shami-ai-launcher:active {
+    transform: scale(0.96);
+}
+
+.shami-ai-launcher-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #D4A853 0%, #B8892E 50%, #94691B 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: 2px solid rgba(255, 235, 180, 0.4);
+    box-shadow: 0 0 0 4px rgba(212, 168, 83, 0.2), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+    overflow: hidden;
+}
+
+.shami-ai-launcher-icon {
+    font-size: 28px;
+    line-height: 1;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    transition: transform 0.3s ease;
+}
+
+.shami-ai-launcher:hover .shami-ai-launcher-icon {
+    transform: rotate(12deg) scale(1.1);
+}
+
+/* Online Pulse Ring */
+.shami-ai-pulse {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 14px;
+    height: 14px;
+    background: #10B981;
+    border: 2.5px solid #0F0E0C;
+    border-radius: 50%;
+}
+
+.shami-ai-pulse::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 50%;
+    border: 2px solid #10B981;
+    animation: shamiPulse 2s infinite ease-out;
+}
+
+@keyframes shamiPulse {
+    0% { transform: scale(1); opacity: 0.9; }
+    70% { transform: scale(2.2); opacity: 0; }
+    100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* Floating Teaser Pill */
+.shami-ai-pill {
+    background: rgba(26, 24, 22, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: #FAF5EB;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    border: 1px solid rgba(212, 168, 83, 0.35);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    pointer-events: none;
+    white-space: nowrap;
+    animation: shamiPillBounce 4s infinite ease-in-out;
+}
+
+.shami-ai-pill-gold {
+    color: #D4A853;
+}
+
+@keyframes shamiPillBounce {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-4px); }
+}
+
+/* Chat Drawer Container */
+.shami-ai-drawer {
+    position: fixed;
+    bottom: 96px;
+    right: 24px;
+    width: 390px;
+    max-width: calc(100vw - 32px);
+    height: 580px;
+    max-height: calc(100vh - 120px);
+    background: #141311;
+    border-radius: 20px;
+    border: 1px solid rgba(212, 168, 83, 0.28);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    pointer-events: none;
+    transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1), transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.shami-ai-drawer.open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+/* Drawer Header */
+.shami-ai-header {
+    background: linear-gradient(180deg, #1F1D1A 0%, #161513 100%);
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(212, 168, 83, 0.2);
+    flex-shrink: 0;
+}
+
+.shami-ai-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.shami-ai-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #D4A853, #94691B);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    border: 2px solid rgba(255, 235, 180, 0.35);
+    flex-shrink: 0;
+}
+
+.shami-ai-title-wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.shami-ai-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #FAF5EB;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    line-height: 1.2;
+}
+
+.shami-ai-badge {
+    background: rgba(212, 168, 83, 0.18);
+    color: #D4A853;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border: 1px solid rgba(212, 168, 83, 0.3);
+}
+
+.shami-ai-subtitle {
+    font-size: 0.72rem;
+    color: #A0988A;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.shami-ai-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #10B981;
+    display: inline-block;
+}
+
+.shami-ai-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.shami-ai-btn-icon {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #C5BCAD;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.shami-ai-btn-icon:hover {
+    background: rgba(212, 168, 83, 0.2);
+    color: #FAF5EB;
+    border-color: rgba(212, 168, 83, 0.4);
+}
+
+/* Guardrail Banner */
+.shami-ai-guard-notice {
+    background: rgba(212, 168, 83, 0.08);
+    border-bottom: 1px solid rgba(212, 168, 83, 0.15);
+    padding: 6px 14px;
+    font-size: 0.72rem;
+    color: #D4A853;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    line-height: 1.3;
+}
+
+/* Messages Area */
+.shami-ai-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    scroll-behavior: smooth;
+}
+
+.shami-ai-messages::-webkit-scrollbar {
+    width: 5px;
+}
+
+.shami-ai-messages::-webkit-scrollbar-thumb {
+    background: rgba(212, 168, 83, 0.25);
+    border-radius: 4px;
+}
+
+/* Message Bubble */
+.shami-ai-msg {
+    display: flex;
+    gap: 8px;
+    max-width: 90%;
+    animation: shamiFadeIn 0.25s ease-out;
+}
+
+@keyframes shamiFadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.shami-ai-msg.bot {
+    align-self: flex-start;
+}
+
+.shami-ai-msg.user {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.shami-ai-msg-avatar {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #2A251D;
+    border: 1px solid rgba(212, 168, 83, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.shami-ai-msg-bubble {
+    padding: 10px 14px;
+    border-radius: 14px;
+    font-size: 0.86rem;
+    line-height: 1.45;
+    word-break: break-word;
+}
+
+.shami-ai-msg.bot .shami-ai-msg-bubble {
+    background: #1F1D1A;
+    color: #EDE3D0;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-top-left-radius: 4px;
+}
+
+.shami-ai-msg.user .shami-ai-msg-bubble {
+    background: linear-gradient(135deg, #D4A853 0%, #B8892E 100%);
+    color: #0F0E0C;
+    font-weight: 500;
+    border-top-right-radius: 4px;
+    box-shadow: 0 2px 10px rgba(212, 168, 83, 0.2);
+}
+
+/* Highlighted Item Cards inside responses */
+.shami-dish-card {
+    background: rgba(15, 14, 12, 0.7);
+    border: 1px solid rgba(212, 168, 83, 0.35);
+    border-radius: 10px;
+    padding: 10px 12px;
+    margin: 8px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.shami-dish-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+}
+
+.shami-dish-name {
+    font-weight: 700;
+    color: #FAF5EB;
+    font-size: 0.88rem;
+}
+
+.shami-dish-price {
+    font-weight: 700;
+    color: #D4A853;
+    font-size: 0.85rem;
+    background: rgba(212, 168, 83, 0.12);
+    padding: 2px 6px;
+    border-radius: 6px;
+}
+
+.shami-dish-desc {
+    font-size: 0.76rem;
+    color: #B5AC9E;
+    line-height: 1.35;
+}
+
+.shami-dish-tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    color: #E8C97A;
+    background: rgba(232, 201, 122, 0.1);
+    padding: 1px 6px;
+    border-radius: 4px;
+    align-self: flex-start;
+    margin-top: 2px;
+}
+
+/* Guardrail Refusal Bubble */
+.shami-guard-warning {
+    background: rgba(179, 58, 58, 0.12) !important;
+    border: 1px solid rgba(179, 58, 58, 0.35) !important;
+}
+
+/* Quick Suggestion Chips */
+.shami-ai-chips-wrap {
+    padding: 8px 12px 10px;
+    background: #141311;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    flex-shrink: 0;
+}
+
+.shami-ai-chips-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: #8C8476;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.shami-ai-chips-scroll {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+}
+
+.shami-ai-chips-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.shami-ai-chip {
+    background: #23201C;
+    border: 1px solid rgba(212, 168, 83, 0.25);
+    color: #FAF5EB;
+    font-size: 0.74rem;
+    padding: 6px 11px;
+    border-radius: 14px;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.shami-ai-chip:hover {
+    background: #D4A853;
+    color: #0F0E0C;
+    border-color: #D4A853;
+    transform: translateY(-1px);
+}
+
+/* Typing indicator */
+.shami-ai-typing {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 12px;
+    background: #1F1D1A;
+    border-radius: 14px;
+    width: fit-content;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.shami-ai-typing span {
+    width: 6px;
+    height: 6px;
+    background: #D4A853;
+    border-radius: 50%;
+    animation: shamiDot 1.4s infinite ease-in-out both;
+}
+
+.shami-ai-typing span:nth-child(1) { animation-delay: -0.32s; }
+.shami-ai-typing span:nth-child(2) { animation-delay: -0.16s; }
+.shami-ai-typing span:nth-child(3) { animation-delay: 0; }
+
+@keyframes shamiDot {
+    0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+    40% { transform: scale(1.1); opacity: 1; }
+}
+
+/* Input Form Area */
+.shami-ai-input-wrap {
+    padding: 10px 12px 14px;
+    background: #181614;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.shami-ai-input {
+    flex: 1;
+    background: #23211D;
+    border: 1px solid rgba(212, 168, 83, 0.25);
+    border-radius: 20px;
+    padding: 9px 14px;
+    font-size: 0.85rem;
+    color: #FAF5EB;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.shami-ai-input:focus {
+    border-color: #D4A853;
+    box-shadow: 0 0 0 2px rgba(212, 168, 83, 0.2);
+}
+
+.shami-ai-input::placeholder {
+    color: #7E776C;
+}
+
+.shami-ai-send-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #D4A853 0%, #B8892E 100%);
+    border: none;
+    color: #0F0E0C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    flex-shrink: 0;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.shami-ai-send-btn:hover {
+    transform: scale(1.06);
+}
+
+.shami-ai-send-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Action button inside bot response */
+.shami-action-btn {
+    display: inline-block;
+    margin-top: 6px;
+    background: #D4A853;
+    color: #0F0E0C !important;
+    font-size: 0.76rem;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s;
+    border: none;
+    cursor: pointer;
+}
+
+.shami-action-btn:hover {
+    background: #E8C97A;
+}
+
+/* Mobile Responsive Optimization */
+@media (max-width: 899px) {
+    .shami-ai-launcher {
+        /* Positioned nicely above the sticky call bar on mobile */
+        bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+        right: 16px;
+    }
+
+    .shami-ai-pill {
+        display: none; /* Hide teaser pill on mobile so it doesn't take too much horizontal space */
+    }
+
+    .shami-ai-launcher-btn {
+        width: 54px;
+        height: 54px;
+    }
+
+    .shami-ai-launcher-icon {
+        font-size: 24px;
+    }
+
+    .shami-ai-drawer {
+        bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+        right: 12px;
+        left: 12px;
+        width: auto;
+        max-width: none;
+        height: 72vh;
+        max-height: 540px;
+    }
+}
+
+/* ===================================================
+   LIGHT THEME ADAPTATION FOR SHAMI AI
+   =================================================== */
+[data-theme="light"] .shami-ai-drawer {
+    background: #FAF7F2;
+    border: 1px solid rgba(184, 134, 46, 0.35);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] .shami-ai-header {
+    background: linear-gradient(180deg, #FFFFFF 0%, #F5EFE6 100%);
+    border-bottom: 1px solid rgba(184, 134, 46, 0.25);
+}
+
+[data-theme="light"] .shami-ai-name {
+    color: #1C1917;
+}
+
+[data-theme="light"] .shami-ai-subtitle {
+    color: #786F63;
+}
+
+[data-theme="light"] .shami-ai-btn-icon {
+    background: rgba(0, 0, 0, 0.05);
+    color: #44403C;
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .shami-ai-btn-icon:hover {
+    background: rgba(184, 134, 46, 0.15);
+    color: #1C1917;
+}
+
+[data-theme="light"] .shami-ai-guard-notice {
+    background: rgba(184, 134, 46, 0.12);
+    color: #8C6418;
+    border-bottom-color: rgba(184, 134, 46, 0.2);
+}
+
+[data-theme="light"] .shami-ai-msg.bot .shami-ai-msg-bubble {
+    background: #FFFFFF;
+    color: #1C1917;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+[data-theme="light"] .shami-dish-card {
+    background: #FDFBF7;
+    border: 1px solid rgba(184, 134, 46, 0.3);
+}
+
+[data-theme="light"] .shami-dish-name {
+    color: #1C1917;
+}
+
+[data-theme="light"] .shami-dish-desc {
+    color: #57534E;
+}
+
+[data-theme="light"] .shami-dish-price {
+    background: rgba(184, 134, 46, 0.15);
+    color: #8C6418;
+}
+
+[data-theme="light"] .shami-dish-tag {
+    background: rgba(184, 134, 46, 0.12);
+    color: #8C6418;
+}
+
+[data-theme="light"] .shami-ai-chips-wrap {
+    background: #FAF7F2;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .shami-ai-chips-label {
+    color: #786F63;
+}
+
+[data-theme="light"] .shami-ai-chip {
+    background: #FFFFFF;
+    border: 1px solid rgba(184, 134, 46, 0.3);
+    color: #1C1917;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+[data-theme="light"] .shami-ai-chip:hover {
+    background: #B8862E;
+    color: #FFFFFF;
+}
+
+[data-theme="light"] .shami-ai-input-wrap {
+    background: #FFFFFF;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .shami-ai-input {
+    background: #F5EFE6;
+    border: 1px solid rgba(184, 134, 46, 0.35);
+    color: #1C1917;
+}
+
+[data-theme="light"] .shami-ai-input::placeholder {
+    color: #8C8476;
+}
+
+[data-theme="light"] .shami-ai-pill {
+    background: rgba(255, 255, 255, 0.95);
+    color: #1C1917;
+    border: 1px solid rgba(184, 134, 46, 0.4);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
