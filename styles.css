@@ -1365,18 +1365,27 @@ ul { list-style: none; }
 .time { color: rgba(250, 245, 235, 0.75); }
 .time.closed { color: var(--color-red); font-weight: 600; }
 
-.contact-actions {
+.contact-info {
     display: flex;
     flex-direction: column;
-    gap: var(--space-sm);
-    margin-top: var(--space-xl);
+}
+
+.contact-info .section-tag {
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-info .section-title {
+    text-align: center;
 }
 
 .about-divider {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: var(--space-sm);
-    margin-bottom: var(--space-lg);
+    margin: 0 auto var(--space-lg);
     color: var(--color-gold);
     font-size: 0.8rem;
 }
@@ -1388,6 +1397,23 @@ ul { list-style: none; }
     background: linear-gradient(to right, var(--color-gold), transparent);
 }
 .about-divider::after { background: linear-gradient(to left, var(--color-gold), transparent); }
+
+.contact-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    margin-top: var(--space-xl);
+}
+
+.contact-actions .btn {
+    flex: 1;
+    min-width: 140px;
+    text-align: center;
+    justify-content: center;
+}
 
 .contact-map {
     position: relative;
