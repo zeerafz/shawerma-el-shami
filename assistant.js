@@ -106,10 +106,83 @@
     }
 
     // ==========================================
-    // 3. FOOD RECOMMENDATION & INTENT ENGINE
+    // 3. FUZZY SPELL CHECKER & TYPO NORMALIZER
     // ==========================================
-    function generateFoodRecommendation(query) {
-        const q = query.toLowerCase().trim();
+    function levenshteinDistance(s1, s2) {
+        if (s1.length < s2.length) return levenshteinDistance(s2, s1);
+        if (s2.length === 0) return s1.length;
+        let prev = [];
+        for (let j = 0; j <= s2.length; j++) prev[j] = j;
+        for (let i = 0; i < s1.length; i++) {
+            let curr = [i + 1];
+            for (let j = 0; j < s2.length; j++) {
+                let ins = prev[j + 1] + 1;
+                let del = curr[j] + 1;
+                let sub = prev[j] + (s1[i] !== s2[j] ? 1 : 0);
+                curr.push(Math.min(ins, del, sub));
+            }
+            prev = curr;
+        }
+        return prev[prev.length - 1];
+    }
+
+    const PHONETIC_TYPO_MAP = {
+        'shwarma': 'shawarma', 'shawrma': 'shawarma', 'shawerma': 'shawarma', 'shawa': 'shawarma', 'shawarmah': 'shawarma',
+        'chiken': 'chicken', 'chikn': 'chicken', 'chickin': 'chicken', 'chickn': 'chicken', 'chikken': 'chicken', 'shicken': 'chicken', 'chikin': 'chicken',
+        'beaf': 'beef', 'bef': 'beef', 'beff': 'beef', 'steek': 'beef', 'meet': 'beef', 'meat': 'beef',
+        'hommus': 'hummus', 'humus': 'hummus', 'hummous': 'hummus', 'hamos': 'hummus', 'homas': 'hummus',
+        'fatoush': 'fattoush', 'fattosh': 'fattoush', 'fatosh': 'fattoush', 'fatoosh': 'fattoush', 'fatus': 'fattoush',
+        'kebba': 'kebbeh', 'kibba': 'kebbeh', 'kebeh': 'kebbeh', 'kibbeh': 'kebbeh', 'kebbe': 'kebbeh', 'keba': 'kebbeh',
+        'sanwich': 'sandwich', 'sandwhich': 'sandwich', 'samwich': 'sandwich', 'sandwidch': 'sandwich', 'sand': 'sandwich',
+        'cmbo': 'combo', 'cambo': 'combo', 'comba': 'combo', 'combos': 'combo',
+        'platr': 'platter', 'plater': 'platter', 'plattar': 'platter', 'platters': 'platter',
+        'famly': 'family', 'famliy': 'family', 'famlly': 'family',
+        'sause': 'sauce', 'soce': 'sauce', 'sauces': 'sauce', 'sos': 'sauce',
+        'toom': 'garlic', 'tum': 'garlic', 'garlick': 'garlic', 'garlics': 'garlic', 'tom': 'garlic',
+        'spciy': 'spicy', 'spisy': 'spicy', 'spcy': 'spicy', 'hot': 'spicy',
+        'vegtarian': 'vegetarian', 'vegitarian': 'vegetarian', 'veggie': 'vegetarian', 'vege': 'vegetarian',
+        'reccomend': 'recommend', 'recomnd': 'recommend', 'reccommend': 'recommend', 'recom': 'recommend',
+        'appetizer': 'appetizer', 'appetiser': 'appetizer', 'apps': 'appetizer', 'apetizer': 'appetizer',
+        'hungrey': 'hungry', 'hangry': 'hungry', 'starvin': 'hungry', 'starving': 'hungry'
+    };
+
+    const TARGET_FOOD_TERMS = [
+        'chicken', 'beef', 'shawarma', 'hummus', 'fattoush', 'sandwich', 'combo', 
+        'platter', 'family', 'garlic', 'sauce', 'spicy', 'vegetarian', 'kebbeh', 
+        'samosa', 'fries', 'hours', 'phone', 'halal', 'recommend', 'popular', 'price'
+    ];
+
+    function normalizeQuery(text) {
+        if (!text) return '';
+        const words = text.toLowerCase().split(/\s+/);
+        const corrected = words.map(w => {
+            const clean = w.replace(/[^a-z0-9]/g, '');
+            if (!clean) return w;
+            if (PHONETIC_TYPO_MAP[clean]) {
+                return PHONETIC_TYPO_MAP[clean];
+            }
+            if (clean.length >= 4) {
+                for (const target of TARGET_FOOD_TERMS) {
+                    const dist = levenshteinDistance(clean, target);
+                    const maxDist = clean.length <= 5 ? 1 : 2;
+                    if (dist <= maxDist) {
+                        return target;
+                    }
+                }
+            }
+            return clean;
+        });
+        return corrected.join(' ');
+    }
+
+    // ==========================================
+    // 4. FOOD RECOMMENDATION & INTENT ENGINE
+    // ==========================================
+    function generateFoodRecommendation(rawQuery) {
+        const rawLower = rawQuery.toLowerCase().trim();
+        const normalized = normalizeQuery(rawLower);
+        // Search both raw and normalized query for maximum typo resilience
+        const q = `${rawLower} ${normalized}`;
 
         // 1. GREETINGS & CASUAL
         if (/^(hi|hello|hey|marhaba|salam|ahlan|hola|yo|good\s+morning|good\s+evening|sup)\b/i.test(q)) {
@@ -316,9 +389,10 @@
             };
         }
 
+        // 17. SMART RECOVERY FALLBACK (Handles unrecognized typos & gibberish)
         return {
-            text: "I want to make sure you get the most delicious meal possible! 🥙\n\nTell me: are you looking for **juicy Chicken Shawarma**, **tender spiced Beef**, a **hearty Rice Platter**, or fresh **Appetizers & Hummus**?",
-            chips: ["🍗 Chicken Combo", "🥩 Beef Combo", "🍚 Rice Platters", "🥗 Vegetarian / Hummus", "🔥 Most Popular"]
+            text: "I didn't quite catch that, but I'm here to help you pick the best food! 🥙\n\nDid you mean to ask about one of these favorites?",
+            chips: ["🔥 Most Popular", "🍗 Chicken Shawarma", "🥩 Beef Shawarma", "🍟 Combos with Fries", "🥗 Vegetarian / Hummus", "👨‍👩‍👧 Family Feast"]
         };
     }
 
