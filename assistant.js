@@ -141,7 +141,12 @@
         'toom': 'garlic', 'tum': 'garlic', 'garlick': 'garlic', 'garlics': 'garlic', 'tom': 'garlic',
         'spciy': 'spicy', 'spisy': 'spicy', 'spcy': 'spicy', 'hot': 'spicy',
         'vegtarian': 'vegetarian', 'vegitarian': 'vegetarian', 'veggie': 'vegetarian', 'vege': 'vegetarian',
-        'reccomend': 'recommend', 'recomnd': 'recommend', 'reccommend': 'recommend', 'recom': 'recommend',
+        'reccomend': 'recommend', 'recomnd': 'recommend', 'reccommend': 'recommend', 'recom': 'recommend', 'recomended': 'recommend', 'recomends': 'recommend',
+        'sugest': 'suggest', 'sugestion': 'suggest', 'sugguest': 'suggest', 'sugges': 'suggest',
+        'ppl': 'people', 'pepole': 'people', 'peopel': 'people', 'peaple': 'people', 'peopl': 'people', 'preson': 'person', 'persons': 'people',
+        'wat': 'what', 'wht': 'what', 'shud': 'should', 'shoud': 'should', 'shld': 'should',
+        'ordr': 'order', 'ordar': 'order',
+        'fav': 'favorite', 'favs': 'favorites', 'favourite': 'favorite',
         'appetizer': 'appetizer', 'appetiser': 'appetizer', 'apps': 'appetizer', 'apetizer': 'appetizer',
         'hungrey': 'hungry', 'hangry': 'hungry', 'starvin': 'hungry', 'starving': 'hungry'
     };
@@ -149,7 +154,8 @@
     const TARGET_FOOD_TERMS = [
         'chicken', 'beef', 'shawarma', 'hummus', 'fattoush', 'sandwich', 'combo', 
         'platter', 'family', 'garlic', 'sauce', 'spicy', 'vegetarian', 'kebbeh', 
-        'samosa', 'fries', 'hours', 'phone', 'halal', 'recommend', 'popular', 'price'
+        'samosa', 'fries', 'hours', 'phone', 'halal', 'recommend', 'popular', 'price',
+        'people', 'couple', 'order', 'suggest', 'drink'
     ];
 
     function normalizeQuery(text) {
@@ -181,42 +187,134 @@
     function generateFoodRecommendation(rawQuery) {
         const rawLower = rawQuery.toLowerCase().trim();
         const normalized = normalizeQuery(rawLower);
-        // Search both raw and normalized query for maximum typo resilience
+        // Combine raw and normalized text for maximum fuzzy resilience
         const q = `${rawLower} ${normalized}`;
 
         // 1. GREETINGS & CASUAL
         if (/^(hi|hello|hey|marhaba|salam|ahlan|hola|yo|good\s+morning|good\s+evening|sup)\b/i.test(q)) {
             return {
                 text: "Ahlan wa Sahlan! Welcome to **Shawerma El Shami**! 🥙\n\nI'm your **Shami AI Menu Sommelier**. I'm here to give you personalized dish recommendations, pairing suggestions, and meal tips.\n\nWhat are you craving today?",
-                chips: ["🔥 Most Popular", "🥩 Beef or Chicken?", "🥗 Vegetarian Options", "👨‍👩‍👧 Family Feast", "🧄 Best Sauces"]
+                chips: ["👫 2 People Meal", "🔥 Most Popular", "🥩 Beef or Chicken?", "🥗 Vegetarian", "👨‍👩‍👧 Family Feast"]
             };
         }
 
-        // 2. FIRST TIME / BEST SELLER / POPULAR / RECOMMENDATION
-        if (q.includes("first time") || q.includes("best seller") || q.includes("popular") || q.includes("what should i") || q.includes("recommend") || q.includes("must try") || q.includes("what is good") || q.includes("signature")) {
+        // 2. MEAL FOR 2 PEOPLE / COUPLE / PAIR (Direct answer to "we are 2 people what should we get")
+        const isTwoPeople = /\b(2\s*(people|person|persons|ppl|of\s*us|guests|adults)|two\s*(people|person|persons|ppl|of\s*us|guests|adults)|couple|pair|date\s*night|both\s*of\s*us|two\s*of\s*us|2\s*of\s*us|for\s*(two|2)|we\s+are\s+(2|two)|dinner\s+for\s+two|lunch\s+for\s+two|me\s+and\s+my\s*(friend|wife|husband|girlfriend|boyfriend|partner|brother|sister|mom|dad|bro))\b/i.test(q) ||
+                            /(شخصين|شخصان|اثنين|لشخصين)/.test(q);
+
+        if (isTwoPeople) {
             return {
-                text: "If it's your first time, you **must try our #1 crowd favorite**! 🏆\n\nOur authentic Syrian shawarma is hand-stacked daily and toasted in Saj bread on the flat-top griddle for that signature crackly crunch.",
+                text: "Dining as a pair? Here are our top 3 best ways to eat for **2 people**! 👫\n\n" +
+                      "🥇 **Option 1 — The Double Combo (Best Value!):**\n" +
+                      "Get the **Chicken Double Combo ($22.99)** or **Beef Double Combo ($23.99)**. It comes with **2 full sandwiches**, a mountain of seasoned fries, crisp Syrian pickles, 2 drinks, and plenty of garlic toum & tahini to share!\n\n" +
+                      "🥈 **Option 2 — The Best of Both Worlds:**\n" +
+                      "Order **1 Chicken Shawarma Combo ($12.99)** + **1 Beef Shawarma Combo ($13.99)** so you both get your own fries and drink, and can trade bites of both authentic spits!\n\n" +
+                      "🥉 **Option 3 — Platter & Appetizer Style:**\n" +
+                      "Share a **Mix & Match Platter ($16.99)** (beef & chicken over spiced yellow rice) + an order of **Traditional Hummus ($7.99)** or **Fried Kebbeh ($15.00)** with warm Saj bread!",
+                items: [
+                    MENU.find(i => i.name === "Chicken Double Combo"),
+                    MENU.find(i => i.name === "Mix & Match Platter (Beef + Chicken)"),
+                    MENU.find(i => i.name === "Hummus w/ Beef Shawarma")
+                ],
+                extra: "💡 **Pro Tip for 2:** Ask for an extra tub of **House Garlic Toum ($0.75)** and a drizzle of sweet & tangy **Pomegranate Molasses ($0.75)** for the ultimate Damascus feast!",
+                chips: ["🍗 Chicken Double Combo", "🥩 Beef Double Combo", "🥙 Mix & Match Platter", "🧄 Best Sauces"]
+            };
+        }
+
+        // 3. MEAL FOR 3 TO 4 PEOPLE (Small Groups / Trios / Quads)
+        const isThreeOrFour = /\b(3\s*(people|person|persons|ppl|of\s*us|guests|adults)|three\s*(people|person|persons|ppl|of\s*us|guests|adults)|4\s*(people|person|persons|ppl|of\s*us|guests|adults)|four\s*(people|person|persons|ppl|of\s*us|guests|adults)|for\s*(3|three|4|four)|(3|4)\s*of\s*us|three\s*of\s*us|four\s*of\s*us|group\s+of\s*(3|4|three|four))\b/i.test(q) ||
+                              /(٣|٤|ثلاث|اربع|3\s*اشخاص|4\s*اشخاص)/.test(q);
+
+        if (isThreeOrFour) {
+            return {
+                text: "Feeding a group of **3 to 4 people**? Here is how to order the ultimate spread! 👨‍👩‍👦\n\n" +
+                      "🌟 **The Winning Combination:**\n" +
+                      "• **1 Chicken Double Combo ($22.99)** (2 full chicken sandwiches + double fries + drinks)\n" +
+                      "• **1 Mix & Match Platter ($16.99)** (beef & chicken over yellow rice with pickles & toum)\n" +
+                      "• **1 Traditional Hummus ($7.99)** or **Fried Kebbeh (4 PC - $15.00)** for the table!\n\n" +
+                      "💡 *Have big eaters in the group?* You can also jump straight to our **Mix Shawarma Family Platter ($80.00)** for a complete royal banquet!",
+                items: [
+                    MENU.find(i => i.name === "Chicken Double Combo"),
+                    MENU.find(i => i.name === "Mix & Match Platter (Beef + Chicken)"),
+                    MENU.find(i => i.name === "Mix Shawarma Family Platter")
+                ],
+                chips: ["👨‍👩‍👧 Family Feast", "🍗 Chicken Combos", "🥩 Beef Combos", "🥗 Appetizers"]
+            };
+        }
+
+        // 4. FAMILY / LARGE GROUP / CATERING / PARTY (5+ People)
+        const isLargeGroup = /\b(5|five|6|six|7|seven|8|eight|10|ten|\d+)\s*(people|person|persons|ppl|of\s*us|guests)|family|party|gathering|crowd|feed|catering|feast|event|banquet\b/i.test(q);
+
+        if (isLargeGroup) {
+            return {
+                text: "Feeding a whole crew or family? We have our legendary royal feast ready! 👨‍👩‍👧‍👦\n\n" +
+                      "👑 **Mix Shawarma Family Platter ($80.00):**\n" +
+                      "Specifically crafted to generously feed **5 to 7 hungry people**! It comes piled high with:\n" +
+                      "• Generous mounds of hand-stacked Chicken AND spiced Beef Shawarma\n" +
+                      "• Large deep tray of golden seasoned fries\n" +
+                      "• Fresh creamy hummus & warm Saj bread rounds\n" +
+                      "• Crisp Syrian pickles & assorted garlic toum and tahini sauces!\n\n" +
+                      "For custom large event trays, call our dedicated catering specialist at **(813) 330-4632**.",
+                items: [
+                    MENU.find(i => i.name === "Mix Shawarma Family Platter"),
+                    MENU.find(i => i.name === "Fried Kebbeh (4 PC)")
+                ],
+                chips: ["📞 Call Catering", "🥗 Add Appetizers", "🔥 Most Popular"]
+            };
+        }
+
+        // 5. BROAD RECOMMENDATION / WHAT SHOULD WE/I GET / WHAT TO ORDER / BEST SELLERS
+        const isRecommendation = /\b(recommend|recommendation|recomnd|suggest|suggestion|best\s*seller|popular|signature|must\s*try|first\s*time|favorite|favorites)\b/i.test(q) ||
+                                 /\bwhat\s+(should|can|do|could|to)\s+(i|we|you|people|one)?\s*(get|order|eat|try|pick|choose|have)\b/i.test(q) ||
+                                 /\bwhat('s|\s+is)\s+(good|best|popular|recommended|fire|special|signature|tasty|hot)\b/i.test(q) ||
+                                 /\b(what\s+to\s+(get|order|eat|try|pick|choose))\b/i.test(q) ||
+                                 /\b(help\s+(me|us)\s+(choose|pick|order|decide))\b/i.test(q) ||
+                                 /\b(what\s+do\s+you\s+have|what('s|\s+is)\s+on\s+the\s+menu)\b/i.test(q) ||
+                                 /\b(any\s+(recommendations|suggestions|ideas))\b/i.test(q);
+
+        if (isRecommendation) {
+            return {
+                text: "Here are our **#1 most-ordered crowd favorites** at Shawerma El Shami! 🏆\n\nOur authentic Syrian shawarma is hand-stacked daily and toasted on the griddle inside warm Saj bread for that signature crackly crunch.",
                 items: [
                     MENU.find(i => i.name === "Chicken Shawarma Combo"),
+                    MENU.find(i => i.name === "Beef Shawarma Combo"),
                     MENU.find(i => i.name === "Mix & Match Platter (Beef + Chicken)")
                 ],
-                extra: "💡 **Pro Tip:** Ask for extra **House Garlic Toum** and a splash of **Pomegranate Molasses** for the true Damascus street style!",
-                chips: ["🥩 Tell me about Beef", "🍟 What comes with Combos?", "🌶️ Give me something spicy"]
+                extra: "💡 **Pro Tip:** Ask for extra **House Garlic Toum ($0.75)** and a splash of **Pomegranate Molasses ($0.75)** for the authentic Damascus street style!",
+                chips: ["👫 2 People Meal", "🥩 Beef vs. Chicken", "🍟 What comes with Combos?", "🌶️ Spicy Picks"]
             };
         }
 
-        // 3. BEEF VS CHICKEN
+        // 6. COMBOS GUIDE / WHAT COMES WITH A COMBO
+        if (q.includes("combo") && (q.includes("come") || q.includes("include") || q.includes("what is") || q.includes("sandwich vs") || q.includes("difference"))) {
+            return {
+                text: "Here is what makes our **Combos** the best value in town! 🍟🥤\n\n" +
+                      "Every Combo includes:\n" +
+                      "• **Your Choice of Shawarma Sandwich** (Regular, Jumbo, or Double)\n" +
+                      "• **Hot Golden Crinkle-Cut Seasoned Fries** (seasoned with Levant herbs)\n" +
+                      "• **Crisp Pickles & Authentic House Sauce** (Garlic Toum for Chicken, Tahini for Beef)\n" +
+                      "• **Refreshing Cold Beverage**\n\n" +
+                      "Combos start at just **$12.99**—it's a complete, hearty meal!",
+                items: [
+                    MENU.find(i => i.name === "Chicken Shawarma Combo"),
+                    MENU.find(i => i.name === "Beef Shawarma Combo")
+                ],
+                chips: ["🍗 Chicken Combo", "🥩 Beef Combo", "👫 2 People Meal"]
+            };
+        }
+
+        // 7. BEEF VS CHICKEN COMPARISON
         if ((q.includes("beef") && q.includes("chicken")) || q.includes("difference") || q.includes("which is better") || q.includes("or chicken") || q.includes("or beef")) {
             return {
-                text: "Here is how our two legendary spits compare:\n\n🍗 **Chicken Shawarma:** Marinated in garlic, lemon, coriander, and Levant cardamom. Sliced thin and toasted in Saj with pickles and creamy garlic toum. Juicier and lighter!\n\n🥩 **Beef Shawarma:** Marinated in ancestral 7-spice blend, allspice, sumac, and warm aromatics. Sliced tender and served with sumac-dusted onions, fresh parsley, tomatoes, and nutty sesame tahini.\n\nCan't pick? Get the **Mix & Match Platter** to enjoy both on a single plate!",
+                text: "Here is how our two legendary spits compare:\n\n🍗 **Chicken Shawarma:** Marinated in garlic, lemon, coriander, and Levant cardamom. Sliced thin and toasted in Saj with pickles and creamy garlic toum. Juicier, zesty, and lighter!\n\n🥩 **Beef Shawarma:** Marinated in ancestral 7-spice blend, allspice, sumac, and warm aromatics. Sliced tender and served with sumac-dusted onions, fresh parsley, tomatoes, and nutty sesame tahini. Rich and savory!\n\nCan't pick? Get the **Mix & Match Platter** to enjoy both on a single plate!",
                 items: [
                     MENU.find(i => i.name === "Mix & Match Platter (Beef + Chicken)")
                 ],
-                chips: ["🍗 Show Chicken Sandwiches", "🥩 Show Beef Sandwiches", "🍟 Check Combos"]
+                chips: ["🍗 Chicken Sandwiches", "🥩 Beef Sandwiches", "🍟 Check Combos"]
             };
         }
 
-        // 4. CHICKEN SPECIFIC
+        // 8. CHICKEN SPECIFIC
         if (q.includes("chicken") && !q.includes("beef")) {
             return {
                 text: "Our chicken shawarma is hand-stacked fresh every single morning! Tender, golden-caramelized, and legendary with our garlic toum. Here are top chicken picks:",
@@ -230,7 +328,7 @@
             };
         }
 
-        // 5. BEEF SPECIFIC
+        // 9. BEEF SPECIFIC
         if (q.includes("beef") && !q.includes("chicken")) {
             return {
                 text: "Our spiced halal beef shawarma is rich, deeply aromatic with sumac, allspice, and clove, wrapped with fresh tomatoes and roasted sesame tahini. Here are top beef picks:",
@@ -244,8 +342,8 @@
             };
         }
 
-        // 6. HUNGER / PORTION SIZE (Starving, Big, Double, Jumbo)
-        if (q.includes("hungry") || q.includes("starving") || q.includes("big") || q.includes("huge") || q.includes("large portion") || q.includes("double") || q.includes("jumbo")) {
+        // 10. HUNGER / PORTION SIZE (Starving, Big, Double, Jumbo)
+        if (q.includes("hungry") || q.includes("starving") || q.includes("big") || q.includes("huge") || q.includes("large portion") || q.includes("double") || q.includes("jumbo") || q.includes("giant")) {
             return {
                 text: "Got a massive appetite? We have serious heavyweight options for big cravings! 💪",
                 items: [
@@ -254,11 +352,11 @@
                     MENU.find(i => i.name === "Chicken Loose Platter")
                 ],
                 extra: "The **Double Combo** gives you **two full sandwiches**, double fries, pickles, and sauces! You will not leave hungry.",
-                chips: ["👨‍👩‍👧 Family Feast", "🍗 Chicken Combos", "🥩 Beef Combos"]
+                chips: ["👫 2 People Meal", "👨‍👩‍👧 Family Feast", "🍗 Chicken Combos"]
             };
         }
 
-        // 7. VEGETARIAN / VEGAN / MEATLESS / HEALTHY
+        // 11. VEGETARIAN / VEGAN / MEATLESS / HEALTHY
         if (q.includes("vegetarian") || q.includes("vegan") || q.includes("meatless") || q.includes("no meat") || q.includes("salad") || q.includes("healthy") || q.includes("plant")) {
             return {
                 text: "Yes! We have delicious, authentic Middle Eastern vegetarian favorites made fresh daily from scratch 🌱:",
@@ -273,28 +371,15 @@
             };
         }
 
-        // 8. FAMILY / GROUP / CATERING / PARTY
-        if (q.includes("family") || q.includes("group") || q.includes("kids") || q.includes("gathering") || q.includes("party") || q.includes("feed") || q.includes("catering") || q.includes("many people")) {
-            return {
-                text: "Feeding a crew? We have the ultimate Syrian feast ready for sharing! 👨‍👩‍👧‍👦",
-                items: [
-                    MENU.find(i => i.name === "Mix Shawarma Family Platter"),
-                    MENU.find(i => i.name === "Fried Kebbeh (4 PC)")
-                ],
-                extra: "The **Mix Shawarma Family Platter ($80.00)** feeds **5 to 7 hungry people** with heaps of both chicken & beef shawarma, seasoned fries, creamy hummus, crisp pickles, fresh Saj bread, and garlic toum & tahini!\n\nFor larger events, call us at **(813) 769-9231** for custom catering trays.",
-                chips: ["📞 Call to Order", "🥗 Add Appetizers", "🔥 Most Popular"]
-            };
-        }
-
-        // 9. SAUCES & PAIRINGS & SIDES
-        if (q.includes("sauce") || q.includes("toum") || q.includes("garlic") || q.includes("tahini") || q.includes("pomegranate") || q.includes("dip") || q.includes("dressing") || q.includes("ayran")) {
+        // 12. SAUCES & PAIRINGS (Toum, Tahini, Pomegranate)
+        if (q.includes("sauce") || q.includes("toum") || q.includes("garlic") || q.includes("tahini") || q.includes("pomegranate") || q.includes("dip") || q.includes("dressing")) {
             return {
                 text: "The secret to genuine Syrian shawarma is the authentic house sauces! All made fresh daily for just **$0.75 each**:\n\n🧄 **House Garlic Toum ($0.75):** Fluffy, whipped fresh garlic whip. Creamy, potent, and essential on chicken.\n\n🌶️ **Hot Garlic Sauce ($0.75):** Garlic toum infused with fiery Syrian chili pepper.\n\n🍯 **Pomegranate Molasses ($0.75):** Tart, sweet, and tangy Damascus reduction. Drizzle it over beef!\n\n🥣 **Tahini Sauce ($0.75):** Roasted sesame cream with lemon and spices.\n\n🥛 **Ayran Yogurt ($3.00):** Chilled salty yogurt beverage that cleanses the palate between savory bites!",
                 chips: ["🍗 Chicken Picks", "🥩 Beef Picks", "🔥 Most Popular"]
             };
         }
 
-        // 10. SPICY RECOMMENDATIONS
+        // 13. SPICY RECOMMENDATIONS
         if (q.includes("spicy") || q.includes("hot") || q.includes("heat") || q.includes("chili") || q.includes("pepper")) {
             return {
                 text: "Looking for a spicy kick? 🔥\n\nAll our sandwiches and platters can be kicked into overdrive! Here is the spicy formula:\n\n1. Order the **Chicken or Beef Shawarma Combo**.\n2. Ask for **Hot Garlic Sauce ($0.75)** spread directly onto the Saj bread before pressing.\n3. Add extra pickled Syrian peppers for an authentic Levant crunch!",
@@ -306,10 +391,26 @@
             };
         }
 
-        // 11. BUDGET / UNDER $10 / CHEAP / INEXPENSIVE
-        if (q.includes("cheap") || q.includes("budget") || q.includes("affordable") || q.includes("under 10") || q.includes("under $10") || q.includes("under 15") || q.includes("under $15") || q.includes("price") || q.includes("deal")) {
+        // 14. DRINKS & BEVERAGES (Ayran, Sodas, Water)
+        if (q.includes("drink") || q.includes("beverage") || q.includes("soda") || q.includes("coke") || q.includes("water") || q.includes("ayran") || q.includes("yogurt")) {
             return {
-                text: "You can eat like a king on any budget at Shawerma El Shami! 💰 Here are great value options:",
+                text: "Quench your thirst with our beverages! 🥤\n\n" +
+                      "⭐ **Ayran Yogurt Drink ($3.00):**\n" +
+                      "The quintessential Middle Eastern pairing! A cold, lightly salted yogurt beverage that cuts right through rich spices and garlic.\n\n" +
+                      "• **Assorted Fountain & Canned Sodas** (Coca-Cola, Diet Coke, Sprite, etc.)\n" +
+                      "• **Bottled Water**\n\n" +
+                      "*Remember:* All Combos come with your choice of beverage included!",
+                items: [
+                    MENU.find(i => i.name === "Ayran Yogurt Drink")
+                ],
+                chips: ["🍟 Check Combos", "🍗 Chicken Combo", "🥩 Beef Combo"]
+            };
+        }
+
+        // 15. BUDGET / UNDER $10 / CHEAP / INEXPENSIVE
+        if (q.includes("cheap") || q.includes("budget") || q.includes("affordable") || q.includes("under 10") || q.includes("under $10") || q.includes("under 15") || q.includes("under $15") || q.includes("price") || q.includes("cost") || q.includes("deal")) {
+            return {
+                text: "You can eat like royalty on any budget at Shawerma El Shami! 💰 Here are great value options:",
                 items: [
                     MENU.find(i => i.name === "Chicken Shawarma Sandwich"),
                     MENU.find(i => i.name === "Beef Shawarma Sandwich"),
@@ -321,7 +422,7 @@
             };
         }
 
-        // 12. APPETIZERS / SIDES / FRIES / SAMOSA / KEBBEH
+        // 16. APPETIZERS / SIDES / FRIES / SAMOSA / KEBBEH
         if (q.includes("appetizer") || q.includes("side") || q.includes("fries") || q.includes("kebbeh") || q.includes("kibbeh") || q.includes("samosa") || q.includes("hummus")) {
             return {
                 text: "Don't miss our authentic Syrian starters and handmade sides! 🧆",
@@ -336,15 +437,19 @@
             };
         }
 
-        // 13. HALAL / DIETARY QUESTIONS
-        if (q.includes("halal") || q.includes("zabiha") || q.includes("pork") || q.includes("meat source") || q.includes("kosher") || q.includes("meat clean")) {
+        // 17. ALLERGIES & DIETARY (Halal, Gluten, Dairy, Nuts)
+        if (q.includes("halal") || q.includes("zabiha") || q.includes("pork") || q.includes("meat source") || q.includes("kosher") || q.includes("allergy") || q.includes("gluten") || q.includes("dairy") || q.includes("nut")) {
             return {
-                text: "🕌 **100% Certified Halal Guarantee!**\n\nAll meats served at Shawerma El Shami are strictly **Certified Zabiha Halal**. Our chicken and beef are hand-stacked and prepared according to highest halal standards.\n\nWe have **zero pork and zero alcohol** on our premises.",
-                chips: ["🍗 Chicken Shawarma", "🥩 Beef Shawarma", "🥗 Vegetarian Options"]
+                text: "🕌 **Dietary & Halal Guidelines:**\n\n" +
+                      "• **100% Certified Zabiha Halal:** All chicken and beef are hand-stacked and prepared to the strictest halal standards. Zero pork, zero lard, zero alcohol on premises.\n" +
+                      "• **Gluten-Sensitive:** Enjoy our **Chicken or Beef Loose Platters** over fragrant yellow rice and salad (ask for no Saj bread)!\n" +
+                      "• **Dairy:** Our house garlic toum is dairy-free (whipped garlic, lemon, oil, salt). Cheese samosas and Ayran drink contain dairy.\n" +
+                      "• **Nuts/Sesame:** Fried Kebbeh contains pine nuts. Tahini contains sesame.",
+                chips: ["🍗 Chicken Platter", "🥩 Beef Platter", "🥗 Vegetarian Options"]
             };
         }
 
-        // 14. RESTAURANT HOURS / LOCATION / ADDRESS / PHONE / HOW TO ORDER
+        // 18. RESTAURANT HOURS / LOCATION / ADDRESS / PHONE / HOW TO ORDER
         if (q.includes("hour") || q.includes("open") || q.includes("close") || q.includes("time") || q.includes("address") || q.includes("where") || q.includes("location") || q.includes("phone") || q.includes("call") || q.includes("order") || q.includes("doordash") || q.includes("delivery")) {
             return {
                 text: `📍 **Shawerma El Shami Info & Ordering:**\n\n` +
@@ -360,9 +465,17 @@
             };
         }
 
-        // 15. ARABIC LANGUAGE SUPPORT (مساعدة بالعربي)
+        // 19. ARABIC LANGUAGE SUPPORT (مساعدة بالعربي)
         if (/[\u0600-\u06FF]/.test(q)) {
-            if (q.includes("تنصح") || q.includes("اطلب") || q.includes("شو") || q.includes("افضل") || q.includes("احسن")) {
+            if (q.includes("شخصين") || q.includes("اثنين") || q.includes("شخصان")) {
+                return {
+                    text: "أهلاً وسهلاً بك! لشخصين أنصحكم بأحد الخيارات التالية: 👫\n\n" +
+                          "🥇 **دبل كومبو دجاج أو لحم ($22.99 - $23.99):** يحتوي على ساندويشين كاملين مع بطاطا دبل ومشروبين وثومية وطحينية.\n\n" +
+                          "🥈 **صحن مشكل شاورما ($16.99):** كمية وفيرة من شاورما الدجاج واللحم على الرز المبهر مع صحن حمص ومخللات وخبر صاج ساخن!",
+                    chips: ["🍗 دبل كومبو دجاج", "🥩 دبل كومبو لحم", "🥙 صحن مشكل"]
+                };
+            }
+            if (q.includes("تنصح") || q.includes("اطلب") || q.includes("شو") || q.includes("افضل") || q.includes("احسن") || q.includes("وجبة")) {
                 return {
                     text: "أهلاً وسهلاً بك في **شاورما الشامي**! 🥙\n\nأنصحك بشدة بـ **كومبو شاورما الدجاج** بخبز الصاج المحمص مع صلصة الثومية الشامية الأصيلة والبطاطا المقرمشة.\n\nوإذا كنت ترغب باللحم، فـ **كومبو شاورما اللحم** بالبهارات الدمشقية مع الطحينية والبقدونس والبصل بالسماق خيار رائع!\n\nهل تفضل دجاج أم لحم؟",
                     chips: ["🍗 شاورما دجاج", "🥩 شاورما لحم", "👨‍👩‍👧 وجبة عائلية"]
@@ -374,8 +487,7 @@
             };
         }
 
-        // 16. GENERIC FOOD FALLBACK
-        // Find best match in menu items
+        // 20. MENU KEYWORD MATCHING
         const matchingItems = MENU.filter(item => 
             q.includes(item.name.toLowerCase()) || 
             q.includes(item.category.toLowerCase())
@@ -383,16 +495,16 @@
 
         if (matchingItems.length > 0) {
             return {
-                text: "Here is what we have matching your taste at Shawerma El Shami! 🥙",
-                items: matchingItems.slice(0, 2),
-                chips: ["🔥 Most Popular", "🧄 What sauces to get?", "👨‍👩‍👧 Family Feast"]
+                text: "Here is what we have matching your cravings at Shawerma El Shami! 🥙",
+                items: matchingItems.slice(0, 3),
+                chips: ["👫 2 People Meal", "🔥 Most Popular", "🧄 What sauces to get?"]
             };
         }
 
-        // 17. SMART RECOVERY FALLBACK (Handles unrecognized typos & gibberish)
+        // 21. SMART RECOVERY FALLBACK (Handles unrecognized typos & gibberish)
         return {
             text: "I didn't quite catch that, but I'm here to help you pick the best food! 🥙\n\nDid you mean to ask about one of these favorites?",
-            chips: ["🔥 Most Popular", "🍗 Chicken Shawarma", "🥩 Beef Shawarma", "🍟 Combos with Fries", "🥗 Vegetarian / Hummus", "👨‍👩‍👧 Family Feast"]
+            chips: ["👫 2 People Meal", "🔥 Most Popular", "🍗 Chicken Shawarma", "🥩 Beef Shawarma", "🍟 Combos with Fries", "👨‍👩‍👧 Family Feast"]
         };
     }
 
