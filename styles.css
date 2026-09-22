@@ -597,6 +597,31 @@ ul { list-style: none; }
     flex-shrink: 0;
 }
 
+/* ── Uber Eats Button ── */
+.btn-ubereats {
+    background: #000;
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+    gap: 8px;
+}
+
+.btn-ubereats:hover {
+    background: #1a1a1a;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
+    color: #06c167;
+}
+
+.btn-ubereats:active { transform: scale(0.97); }
+
+.ubereats-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
 /* ── Google Review Button ── */
 .btn-google-review {
     background: rgba(255, 255, 255, 0.06);
